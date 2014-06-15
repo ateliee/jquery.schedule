@@ -1,0 +1,129 @@
+
+#schedule{
+}
+#schedule .clear{ clear:both; height: 0; line-height: 0;}
+#schedule .sc_wrapper{
+}
+#schedule .sc_menu{
+	width:100%;
+	height:26px;
+}
+#schedule .sc_menu .sc_header_cell{
+	float:left;
+}
+#schedule .sc_menu .sc_header{
+	float:left;
+	height:26px;
+	position:relative;
+	overflow:hidden;
+}
+#schedule .sc_menu .sc_header .sc_time{
+	text-align:center;
+	border-left:solid 1px #FFF;
+	background:#333;
+}
+#schedule .sc_menu .sc_header_cell,
+#schedule .sc_data{
+	float:left;
+	font-weight:bold;
+	color:#FFFFFF;
+	background:#333;
+	position:relative;
+}
+#schedule .sc_menu .sc_header_scroll,
+#schedule .sc_data .sc_data_scroll{
+	position:absolute;
+	left:0;
+	top:0;
+}
+#schedule .sc_menu .sc_header_cell,
+#schedule .sc_header .sc_time,
+#schedule .sc_main_scroll .sc_time{
+	color:#FFFFFF;
+	padding:4px 0;
+	line-height:18px;
+	height:18px;
+	display:block;
+}
+#schedule .sc_header .sc_time,
+#schedule .sc_main_scroll .sc_time{
+	float:left;
+}
+#schedule .sc_main_box,
+#schedule .sc_data{
+	max-height:500px;
+	overflow:hidden;
+}
+#schedule .sc_main_box{
+	float:left;
+	overflow-x:auto;
+	overflow-y:auto;
+}
+#schedule .sc_main_scroll{
+}
+#schedule .sc_main{
+	position:relative;
+}
+#schedule .timeline{
+	position:relative;
+}
+#schedule .sc_Bar{
+	position:absolute;
+	color:#FFF;
+	background:#4f93d6;
+	cursor:pointer;
+	z-index:10;
+	box-shadow: 2px 2px 4px #333;
+	-moz-box-shadow: 2px 2px 4px #333;
+	-webkit-box-shadow: 2px 2px 4px #333;
+}
+#schedule .ui-draggable-dragging,
+#schedule .ui-resizeable{
+	z-index:20;
+}
+#schedule .sc_Bar .head{
+	display:block;
+	padding:6px 8px 0;
+	font-size:12px;
+	height:16px;
+	overflow:hidden;
+}
+#schedule .sc_Bar .text{
+	display:block;
+	padding:5px 15px 0;
+	font-weight:bold;
+	height:18px;
+	overflow:hidden;
+}
+#schedule .timeline,
+#schedule .sc_main .tb{
+	border-bottom:solid 2px #666;
+}
+#schedule .sc_data .timeline{
+	overflow:hidden;
+}
+#schedule .sc_data .timeline span{
+	padding:10px;
+	display:block;
+}
+#schedule .sc_data .timeline span.photo{
+	float:left;
+	width:36px;
+	height:36px;
+	padding:10px 0 10px 10px;
+}
+#schedule .sc_data .timeline span.title{
+	float:left;
+	padding:10px 0 10px 10px;
+	width:92px;
+}
+#schedule .sc_main_scroll .sc_main{
+}
+#schedule .sc_main_scroll .sc_main .tl{
+	float:left;
+	height:100%;
+	border-right:solid 1px #CCC;
+}
+#schedule .sc_main_scroll .sc_main .tl:hover{
+	background:#F0F0F0;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jq.Schedule Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">jQ.Scuedule.js</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#demo">Demo</a></li>
+              <li><a href="#info">Get Start</a></li>
+              <li><a href="#option">Option</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <h1 id="home">jq.Schedule</h1>
+        <p class="text-info">javascript base time schedule plugin.</p>
+        <p>jquery and jquery.ui include and setup</p>
+        <h2 id="demo">Demo</h2>
+        <p>
+            Example Sample Demo
+        </p>
+        <div style="padding: 0 0 40px;">
+        <div id="schedule"></div>
+        </div>
+        <h2 id="info">Get Start</h2>
+        <ol>
+        <li><p>Please Download <a href="https://github.com/ateliee/jquery.schedule/archive/master.zip">jQuery.Schedule</a></p></li>
+        <li>
+            <p>include <code>jquery.js</code>and<code>jquery.ui.js</code> after jq.schedule</p>
+            <pre><code>&lt;script src=&quot;jquery-1.10.2.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;jquery-ui-1.10.4.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jq.schedule.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/style.css&quot; /&gt;</code></pre>
+        </li>
+        <li>
+            <p>init scripts</p>
+            <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+jQuery(document).ready(function(){
+    var $sc = jQuery(&quot;#schedule&quot;).timeSchedule($options);
+});
+&lt;/script&gt;</code></pre>
+        </li>
+        </ol>
+        
+        <h2 id="option">Option</h2>
+        <p>
+            <table class="table table-striped">
+            <tr>
+                <th colspan="2">name</th>
+                <th width="80">Value</th>
+                <th>description</th>
+            </tr>
+            <tr>
+                <td colspan="2">startTime</td>
+                <td>String(HH:ii)</td>
+                <td>schedule start time</td>
+            </tr>
+            <tr>
+                <td colspan="2">endTime</td>
+                <td>String(HH:ii)</td>
+                <td>schedule end time</td>
+            </tr>
+            <tr>
+                <td colspan="2">widthTime</td>
+                <td>Integer</td>
+                <td>minuite time line cell</td>
+            </tr>
+            <tr>
+                <td colspan="2">timeLineY</td>
+                <td>Integer</td>
+                <td>cell height px</td>
+            </tr>
+            <tr>
+                <td colspan="2">verticalScrollbar</td>
+                <td>Integer</td>
+                <td>scrollbar (px)</td>
+            </tr>
+            <tr>
+                <td colspan="2">timeLineBorder</td>
+                <td>Integer</td>
+                <td>border(top and bottom)</td>
+            </tr>
+            <tr>
+                <td colspan="2">debug</td>
+                <td>String,element</td>
+                <td>debug string output elements</td>
+            </tr>
+            <tr>
+                <td rowspan="3">rows</td>
+                <td></td>
+                <td>Array</td>
+                <td>Schedule Data</td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>String</td>
+                <td>Schedule Left Cell Text</td>
+            </tr>
+            <tr>
+                <td>schedule</td>
+                <td>Array</td>
+                <td>Schedule Cell Data</td>
+            </tr>
+            </table>
+        </p>
+    <!-- /container --></div>
+<script src="jquery-1.10.2.js" type="text/javascript" language="javascript"></script>
+<script src="jquery-ui-1.10.4.js" type="text/javascript" language="javascript"></script>
+
+<script type="text/javascript" src="../js/jq.schedule.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<style>
+  body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  }
+</style>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    var $sc = jQuery("#schedule").timeSchedule({
+        startTime: "07:00", // schedule start time(HH:ii)
+        endTime: "21:00",   // schedule end time(HH:ii)
+        widthTime:600,      // cell timestamp
+        timeLineY:60,       // height(px)
+        verticalScrollbar:20,   // scrollbar (px)
+        timeLineBorder:2,   // border(top and bottom)
+        debug:"#debug",     // debug string output elements
+        rows : {
+            '1' : {
+                title : 'Title Area',
+                schedule:[
+                    {
+                        start:'09:00',
+                        end:'12:00',
+                        text:'Text Area',
+                        data:{
+                        }
+                    },
+                    {
+                        start:'11:00',
+                        end:'14:00',
+                        text:'Text Area',
+                        data:{
+                        }
+                    }
+                ]
+            },
+            '2' : {
+                title : 'Title Area',
+                schedule:[
+                    {
+                        start:'16:00',
+                        end:'17:00',
+                        text:'Text Area',
+                        data:{
+                        }
+                    }
+                ]
+            }
+        },
+        change: function(node,data){
+            alert("change event");
+        },
+        init_data: function(node,data){
+        },
+        click: function(node,data){
+            alert("click event");
+        },
+        append: function(node,data){
+        },
+        time_click: function(time,data){
+            alert("time click event");
+        },
+    });
+});
+</script>
+</body>
+</html>
