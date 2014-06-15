@@ -3,129 +3,10 @@
 <head>
 <title>jq.Schedule Demo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">jQ.Scuedule.js</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#home">Home</a></li>
-              <li><a href="#demo">Demo</a></li>
-              <li><a href="#info">Get Start</a></li>
-              <li><a href="#option">Option</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-    <div class="container">
-        <div class="hero-unit">
-            <h1 id="home">jq.Schedule</h1>
-            <p>javascript base time schedule plugin.</p>
-            <p>Drag and Drop Support</p>
-            <p>Resize Schedule</p>
-            <p>Ajax Support(Callback Event Option)</p>
-            <p><button onclick="javascript:location.href='https://github.com/ateliee/jquery.schedule';" class="btn btn-large btn-primary" type="button">Download jq.Schedule</button></p>
-        </div>
-        <h2 id="demo">Demo</h2>
-        <p>
-            Example Sample Demo
-        </p>
-        <div style="padding: 0 0 40px;">
-        <div id="schedule"></div>
-        </div>
-        <h2 id="info">Get Start</h2>
-        <ol>
-        <li><p>Please Download <a href="https://github.com/ateliee/jquery.schedule/archive/master.zip">jQuery.Schedule</a></p></li>
-        <li>
-            <p>include <code>jquery.js</code>and<code>jquery.ui.js</code> after jq.schedule</p>
-            <pre><code>&lt;script src=&quot;jquery-1.10.2.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;jquery-ui-1.10.4.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jq.schedule.js&quot;&gt;&lt;/script&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/style.css&quot; /&gt;</code></pre>
-        </li>
-        <li>
-            <p>init scripts</p>
-            <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-jQuery(document).ready(function(){
-    var $sc = jQuery(&quot;#schedule&quot;).timeSchedule($options);
-});
-&lt;/script&gt;</code></pre>
-        </li>
-        </ol>
-        
-        <h2 id="option">Option</h2>
-        <p>
-            <table class="table table-striped">
-            <tr>
-                <th colspan="2">name</th>
-                <th width="80">Value</th>
-                <th>description</th>
-            </tr>
-            <tr>
-                <td colspan="2">startTime</td>
-                <td>String(HH:ii)</td>
-                <td>schedule start time</td>
-            </tr>
-            <tr>
-                <td colspan="2">endTime</td>
-                <td>String(HH:ii)</td>
-                <td>schedule end time</td>
-            </tr>
-            <tr>
-                <td colspan="2">widthTime</td>
-                <td>Integer</td>
-                <td>minuite time line cell</td>
-            </tr>
-            <tr>
-                <td colspan="2">timeLineY</td>
-                <td>Integer</td>
-                <td>cell height px</td>
-            </tr>
-            <tr>
-                <td colspan="2">verticalScrollbar</td>
-                <td>Integer</td>
-                <td>scrollbar (px)</td>
-            </tr>
-            <tr>
-                <td colspan="2">timeLineBorder</td>
-                <td>Integer</td>
-                <td>border(top and bottom)</td>
-            </tr>
-            <tr>
-                <td colspan="2">debug</td>
-                <td>String,element</td>
-                <td>debug string output elements</td>
-            </tr>
-            <tr>
-                <td rowspan="3">rows</td>
-                <td></td>
-                <td>Array</td>
-                <td>Schedule Data</td>
-            </tr>
-            <tr>
-                <td>title</td>
-                <td>String</td>
-                <td>Schedule Left Cell Text</td>
-            </tr>
-            <tr>
-                <td>schedule</td>
-                <td>Array</td>
-                <td>Schedule Cell Data</td>
-            </tr>
-            </table>
-        </p>
-    <!-- /container --></div>
 <script src="jquery-1.10.2.js" type="text/javascript" language="javascript"></script>
 <script src="jquery-ui-1.10.4.js" type="text/javascript" language="javascript"></script>
+<link rel="stylesheet" type="text/css" href="jquery-ui-1.10.4.css" />
 
 <script type="text/javascript" src="../js/jq.schedule.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
@@ -196,5 +77,203 @@ jQuery(document).ready(function(){
     });
 });
 </script>
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">jQ.Scuedule.js</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#demo">Demo</a></li>
+              <li><a href="#info">Get Start</a></li>
+              <li><a href="#option">Option</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="container">
+        <div class="hero-unit">
+            <h1 id="home">jq.Schedule</h1>
+            <p>javascript base time schedule plugin.</p>
+            <p>Drag and Drop Support</p>
+            <p>Resize Schedule</p>
+            <p>Ajax Support(Callback Event Option)</p>
+            <p><button onclick="javascript:location.href='https://github.com/ateliee/jquery.schedule';" class="btn btn-large btn-primary" type="button">Download jq.Schedule</button></p>
+            <p>
+            <iframe src="http://ghbtns.com/github-btn.html?user=ateliee&repo=jquery.schedule&type=watch&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+            </p>
+        </div>
+        <h2 id="demo">Demo</h2>
+        <p>
+            Example Sample Demo
+        </p>
+        <div style="padding: 0 0 40px;">
+        <div id="schedule"></div>
+        </div>
+        <h2 id="info">Get Start</h2>
+        <ol>
+        <li><p>Please Download <a href="https://github.com/ateliee/jquery.schedule/archive/master.zip">jQuery.Schedule</a></p></li>
+        <li>
+            <p>include <code>jquery.js</code>and<code>jquery.ui.js</code> after jq.schedule</p>
+            <pre><code>&lt;script src=&quot;jquery-1.10.2.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;jquery-ui-1.10.4.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jq.schedule.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/style.css&quot; /&gt;</code></pre>
+        </li>
+        <li>
+            <p>init scripts</p>
+            <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+jQuery(document).ready(function(){
+    var $sc = jQuery(&quot;#schedule&quot;).timeSchedule($options);
+});
+&lt;/script&gt;</code></pre>
+        </li>
+        </ol>
+        
+        <h2 id="option">Option</h2>
+        <p>
+            <table class="table table-striped">
+            <tr>
+                <th colspan="2">name</th>
+                <th width="80">Type</th>
+                <th>description</th>
+            </tr>
+            <tr>
+                <td colspan="2">startTime</td>
+                <td>String(HH:ii)</td>
+                <td>schedule start time</td>
+            </tr>
+            <tr>
+                <td colspan="2">endTime</td>
+                <td>String(HH:ii)</td>
+                <td>schedule end time</td>
+            </tr>
+            <tr>
+                <td colspan="2">widthTime</td>
+                <td>Integer</td>
+                <td>minuite time line cell</td>
+            </tr>
+            <tr>
+                <td colspan="2">timeLineY</td>
+                <td>Integer</td>
+                <td>cell height px</td>
+            </tr>
+            <tr>
+                <td colspan="2">verticalScrollbar</td>
+                <td>Integer</td>
+                <td>scrollbar (px)</td>
+            </tr>
+            <tr>
+                <td colspan="2">timeLineBorder</td>
+                <td>Integer</td>
+                <td>border(top and bottom)</td>
+            </tr>
+            <tr>
+                <td colspan="2">debug</td>
+                <td>String,element</td>
+                <td>debug string output elements</td>
+            </tr>
+            <tr>
+                <td rowspan="3">rows</td>
+                <td></td>
+                <td>Array</td>
+                <td>Schedule Data</td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>String</td>
+                <td>Schedule Left Cell Text</td>
+            </tr>
+            <tr>
+                <td>schedule</td>
+                <td>Array</td>
+                <td>Schedule Cell Data</td>
+            </tr>
+            <tr>
+                <td colspan="2">change</td>
+                <td>function</td>
+                <td>callback change time</td>
+            </tr>
+            <tr>
+                <td colspan="2">click</td>
+                <td>function</td>
+                <td>callback click time</td>
+            </tr>
+            <tr>
+                <td colspan="2">time_click</td>
+                <td>function</td>
+                <td>callback timebar click</td>
+            </tr>
+            <tr>
+                <td colspan="2">append</td>
+                <td>function</td>
+                <td>callback append time</td>
+            </tr>
+            </table>
+        </p>
+        
+        <h2 id="option">Schedule Data</h2>
+        <p>
+            <table class="table table-striped">
+            <tr>
+                <th colspan="2">name</th>
+                <th width="80">Type</th>
+                <th>description</th>
+            </tr>
+            <tr>
+                <td colspan="2">title</td>
+                <td>String</td>
+                <td>Visible Text Schedule Bar</td>
+            </tr>
+            <tr>
+                <td colspan="2">class</td>
+                <td>String</td>
+                <td>add class name</td>
+            </tr>
+            <tr>
+                <td rowspan="5">schedule</td>
+                <td colspan="2">array</td>
+                <td>add schedule data</td>
+            </tr>
+            <tr>
+                <td>start</td>
+                <td>String</td>
+                <td>time String(HH:ii)</td>
+            </tr>
+            <tr>
+                <td>end</td>
+                <td>String</td>
+                <td>time String(HH:ii)</td>
+            </tr>
+            <tr>
+                <td>text</td>
+                <td>String</td>
+                <td>Show Text</td>
+            </tr>
+            <tr>
+                <td>data</td>
+                <td>Object,Array</td>
+                <td>callback data Object</td>
+            </tr>
+            </table>
+        </p>
+    <!-- /container --></div>
+    
+    
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright © 2014 <a href="https://github.com/ateliee" target="_blank">ateliee</a> inc. All Rights Reserved.</p>
+      </div>
+    </div>
 </body>
 </html>
