@@ -193,6 +193,29 @@
 				});
 			}
 		};
+        this.getScheduleData = function(){
+            var data = new Array();
+
+            for(var i in timelineData){
+                if(typeof timelineData[i] == "undefined") continue;
+                var timeline = jQuery.extend(true, {}, timelineData[i]);
+                timeline.schedule = new Array();
+                data.push(timeline);
+            }
+
+            for(var i in scheduleData){
+                if(typeof scheduleData[i] == "undefined") continue;
+                var schedule = jQuery.extend(true, {}, scheduleData[i]);
+                schedule.start = this.formatTime(schedule.start);
+                schedule.end = this.formatTime(schedule.end);
+                var timelineIndex = schedule.timeline;
+                delete schedule.timeline;
+                data[timelineIndex].schedule.push(schedule);
+            }
+
+            return data;
+
+        };
 		// テキストの変更
 		this.rewriteBarText = function(node,data){
 			var x = node.position().left;
