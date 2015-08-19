@@ -492,7 +492,7 @@
             for(var t=tableStartTime;t<tableEndTime;t+=setting.widthTime){
 
                 if(
-                    (before_time <= 0) ||
+                    (before_time < 0) ||
                         (Math.floor(before_time / 3600) != Math.floor(t / 3600))){
                     var html = '';
                     html += '<div class="sc_time">'+element.formatTime(t)+'</div>';
