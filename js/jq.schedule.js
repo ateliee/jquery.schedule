@@ -15,6 +15,7 @@
             headTimeBorder:1,	// time border width
             dataWidth:160,		// data width
             verticalScrollbar:0,	// vertical scrollbar width
+            bundleMoveWidth:1,  // width to move all schedules to the right of the clicked time cell
             // event
             init_data: null,
             change: null,
@@ -285,11 +286,22 @@
                 $timeline.append($tl);
             }
             // クリックイベント
-            if(setting.time_click){
-                $timeline.find(".tl").click(function(){
+            // left click
+            $timeline.find(".tl").click(function(){
+                element.moveAllRightCells(jQuery(this).data("timeline"), jQuery(this), setting.bundleMoveWidth);
+                if(setting.time_click){
                     setting.time_click(this,jQuery(this).data("time"),jQuery(this).data("timeline"),timelineData[jQuery(this).data("timeline")]);
-                });
-            }
+                }
+            });
+            // right click
+            $timeline.find(".tl").on("contextmenu", function(e){
+                element.moveAllRightCells(jQuery(this).data("timeline"), jQuery(this), -1 * setting.bundleMoveWidth);
+                if(setting.time_click){
+                    setting.time_click(this,jQuery(this).data("time"),jQuery(this).data("timeline"),timelineData[jQuery(this).data("timeline")]);
+                }
+                return false;
+            });
+
             $element.find('.sc_main').append($timeline);
 
             timelineData[timeline] = row;
@@ -453,6 +465,29 @@
             $element.find(".sc_header_scroll").width(setting.widthTimeX*cell_num);
             $element.find(".sc_main_scroll").width(setting.widthTimeX*cell_num);
 
+        };
+        // move all cells of the right of the specified time line cell
+        this.moveAllRightCells = function(timeline, baseTimeLineCell, moveWidth){
+            var $bar_list = $element.find('.sc_main .timeline').eq(timeline).find(".sc_Bar");
+            for(var i=0;i<$bar_list.length;i++){
+                var $bar = jQuery($bar_list[i]);
+                if(baseTimeLineCell.position().left <= $bar.position().left) {
+                    $bar.css({left : Math.max(0, Math.min($bar.position().left + setting.widthTimeX * moveWidth, Math.floor((tableEndTime - tableStartTime) / setting.widthTime) * setting.widthTimeX - $bar.width()))});
+                    
+                    var sc_key = $bar.data("sc_key");
+                    var start = tableStartTime + (Math.floor($bar.position().left / setting.widthTimeX) * setting.widthTime);
+                    var end = start + ((scheduleData[sc_key]["end"] - scheduleData[sc_key]["start"]));
+                    scheduleData[sc_key]["start"] = start;
+                    scheduleData[sc_key]["end"] = end;
+                    element.rewriteBarText($bar,scheduleData[sc_key]);
+
+                    // if setting 
+                    if(setting.change) {
+                        setting.change($bar, scheduleData[sc_key]);
+                    }
+                }
+            }
+            element.resetBarPosition(timeline);
         };
         // init
         this.init = function(){

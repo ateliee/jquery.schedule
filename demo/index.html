@@ -28,9 +28,10 @@ jQuery(document).ready(function(){
         timeLineY:60,       // height(px)
         verticalScrollbar:20,   // scrollbar (px)
         timeLineBorder:2,   // border(top and bottom)
+        bundleMoveWidth:6,  // width to move all schedules to the right of the clicked time line cell
         debug:"#debug",     // debug string output elements
         rows : {
-            '1' : {
+            '0' : {
                 title : 'Title Area',
                 schedule:[
                     {
@@ -49,7 +50,7 @@ jQuery(document).ready(function(){
                     }
                 ]
             },
-            '2' : {
+            '1' : {
                 title : 'Title Area',
                 schedule:[
                     {
@@ -178,6 +179,11 @@ jQuery(document).ready(function(){
                 <td colspan="2">timeLineBorder</td>
                 <td>Integer</td>
                 <td>border(top and bottom)</td>
+            </tr><tr>
+                <td colspan="2">bundleMoveWidth</td>
+                <td>Integer</td>
+                <td>width to move all schedules to the right of the clicked time line cell.
+                </td>
             </tr>
             <tr>
                 <td colspan="2">debug</td>
