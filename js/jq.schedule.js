@@ -288,14 +288,14 @@
             // クリックイベント
             // left click
             $timeline.find(".tl").click(function(){
-                element.moveAllRightCells(jQuery(this).data("timeline"), jQuery(this), setting.bundleMoveWidth);
+                element.moveSchedules(jQuery(this).data("timeline"), jQuery(this), setting.bundleMoveWidth);
                 if(setting.time_click){
                     setting.time_click(this,jQuery(this).data("time"),jQuery(this).data("timeline"),timelineData[jQuery(this).data("timeline")]);
                 }
             });
             // right click
             $timeline.find(".tl").on("contextmenu", function(e){
-                element.moveAllRightCells(jQuery(this).data("timeline"), jQuery(this), -1 * setting.bundleMoveWidth);
+                element.moveSchedules(jQuery(this).data("timeline"), jQuery(this), -1 * setting.bundleMoveWidth);
                 if(setting.time_click){
                     setting.time_click(this,jQuery(this).data("time"),jQuery(this).data("timeline"),timelineData[jQuery(this).data("timeline")]);
                 }
@@ -467,7 +467,7 @@
 
         };
         // move all cells of the right of the specified time line cell
-        this.moveAllRightCells = function(timeline, baseTimeLineCell, moveWidth){
+        this.moveSchedules = function(timeline, baseTimeLineCell, moveWidth){
             var $bar_list = $element.find('.sc_main .timeline').eq(timeline).find(".sc_Bar");
             for(var i=0;i<$bar_list.length;i++){
                 var $bar = jQuery($bar_list[i]);
