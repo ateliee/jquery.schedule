@@ -1,5 +1,5 @@
 {
-  "name": "jquery.schedule",
+  "name": "@ateliee/jquery.schedule",
   "version": "1.0.0",
   "description": "jQuery time schedule plugin",
   "main": "js/index.js",
