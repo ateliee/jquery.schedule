@@ -20,9 +20,15 @@ npm install ateliee/jquery.schedule
 
 ## How to use
 
+append head css
+```
+<link rel="stylesheet" type="text/css" href="./jquery.schedule/css/style.css" />
+```
+
+insert body
 ```
 <div id="schedule"></div>
-<script type="text/javascript" src="js/jq.schedule.js"></script>
+<script type="text/javascript" src="./jquery.schedule/js/jq.schedule.js"></script>
 <script type="text/javascript">
     $(function(){
         var $sc = jQuery("#schedule").timeSchedule({
