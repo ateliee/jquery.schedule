@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/ateliee/jquery.schedule#readme",
   "dependencies": {
-    "jquery": "^2.0.0"
+    "jquery": "^3.4.1"
   }
 }
