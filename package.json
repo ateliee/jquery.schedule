@@ -1,0 +1,25 @@
+{
+  "name": "jquery.schedule",
+  "version": "1.0.0",
+  "description": "jQuery time schedule plugin",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ateliee/jquery.schedule.git"
+  },
+  "keywords": [
+    "jQuery",
+    "Schedule",
+    "Calendar",
+    "TimeSchedule"
+  ],
+  "author": "ateliee <info@ateliee.com> (https://ateliee.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ateliee/jquery.schedule/issues"
+  },
+  "homepage": "https://github.com/ateliee/jquery.schedule#readme"
+}

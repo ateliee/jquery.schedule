@@ -1,9 +1,9 @@
 {
   "name": "jquery.schedule",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/ateliee/jquery.schedule",
   "authors": [
-    "Syouta minato <ateliee@gmail.com>"
+    "ateliee <info@ateliee.com>"
   ],
   "description": "jQuery time schedule plugin",
   "main": "js/jq.schedule.js",
