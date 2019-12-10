@@ -9,9 +9,10 @@ javascript base time schedule plugin.
 
 ## install
 
-### npm
+### package
 ```
 npm install @ateliee/jquery.schedule
+bower install @ateliee/jquery.schedule
 ```
 
 ## Demo
