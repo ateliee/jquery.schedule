@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - '1.5'
-  - '1.8.5'
 script:
   - echo "Running tests against $(node -v) ..."
   - npm test
@@ -12,7 +11,7 @@ before_install:
 jobs:
   include:
     - stage: npm release
-      node_js: '1.8.5'
+      node_js: '1.5'
       script: echo "Deploying to npm ..."
       deploy:
         provider: npm
