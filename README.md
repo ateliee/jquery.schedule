@@ -1,6 +1,10 @@
 jq.Schedule
 ===============
 
+[![npm version](https://badge.fury.io/js/%40ateliee%2Fjquery.schedule.svg)](https://badge.fury.io/js/%40ateliee%2Fjquery.schedule)
+[![Build Status](https://travis-ci.com/ateliee/jquery.schedule.svg?branch=master)](https://travis-ci.com/ateliee/jquery.schedule)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+
 ![](https://raw.githubusercontent.com/ateliee/jquery.schedule/master/demo/images.png)
 
 jquery and html schedule calendar
