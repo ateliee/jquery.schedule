@@ -1,4 +1,3 @@
-
 (function($) {
     $.fn.timeSchedule = function(options){
         var defaults = {
@@ -473,7 +472,7 @@
                 var $bar = jQuery($bar_list[i]);
                 if(baseTimeLineCell.position().left <= $bar.position().left) {
                     $bar.css({left : Math.max(0, Math.min($bar.position().left + setting.widthTimeX * moveWidth, Math.floor((tableEndTime - tableStartTime) / setting.widthTime) * setting.widthTimeX - $bar.width()))});
-                    
+
                     var sc_key = $bar.data("sc_key");
                     var start = tableStartTime + (Math.floor($bar.position().left / setting.widthTimeX) * setting.widthTime);
                     var end = start + ((scheduleData[sc_key]["end"] - scheduleData[sc_key]["start"]));
@@ -481,7 +480,7 @@
                     scheduleData[sc_key]["end"] = end;
                     element.rewriteBarText($bar,scheduleData[sc_key]);
 
-                    // if setting 
+                    // if setting
                     if(setting.change) {
                         setting.change($bar, scheduleData[sc_key]);
                     }
@@ -528,7 +527,7 @@
 
                 if(
                     (before_time < 0) ||
-                        (Math.floor(before_time / 3600) != Math.floor(t / 3600))){
+                    (Math.floor(before_time / 3600) != Math.floor(t / 3600))){
                     var html = '';
                     html += '<div class="sc_time">'+element.formatTime(t)+'</div>';
                     var $time = jQuery(html);
@@ -569,11 +568,10 @@
             jQuery(setting.debug).html(html);
         };
         if(setting.debug && setting.debug != ""){
-            setInterval(function(){
+            setInterval( function () {
                 element.debug();
-            },10);
+            }, 10);
         }
-
-        return( this );
+        return this;
     };
 })(jQuery);

@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - stable
+script:
+  - echo "Running tests against $(node -v) ..."
+  - npm test
+
+before_install:
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+
+jobs:
+  include:
+    - stage: npm release
+      node_js: stable
+      script: echo "Deploying to npm ..."
+      deploy:
+        provider: npm
+        edge: true
+        email: info@ateliee.com
+        access: public
+        on:
+          branch: master
+          tags: true
+        api_key: $NPM_TOKEN
