@@ -15,7 +15,7 @@ javascript base time schedule plugin.
 
 ### package
 ```
-npm i @ateliee/jquery.schedule --save
+npm i jq.schedule --save
 ```
 
 ## Demo
