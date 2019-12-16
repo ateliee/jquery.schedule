@@ -7,7 +7,7 @@ script:
   - npm test
 
 before_install:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+  - echo "//registry.npmjs.com/:_authToken=\${NPM_TOKEN}" > .npmrc
 
 jobs:
   include:
