@@ -13,10 +13,11 @@
     "url": "git+https://github.com/ateliee/jquery.schedule.git"
   },
   "keywords": [
-    "jQuery",
-    "Schedule",
-    "Calendar",
-    "TimeSchedule"
+    "jquery",
+    "front-end",
+    "schedule",
+    "calendar",
+    "web"
   ],
   "author": "ateliee <info@ateliee.com> (https://ateliee.com)",
   "license": "MIT",
