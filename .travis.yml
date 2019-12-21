@@ -15,7 +15,6 @@ jobs:
       node_js: '8.16.2'
       script:
         - echo "Deploying to npm ..."
-        - npm run build
       deploy:
         provider: npm
         edge: true
