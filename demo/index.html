@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 
     <script type="text/javascript" src="../dist/js/jq.schedule.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../dist/css/style.min.css" />
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
@@ -139,8 +139,8 @@
             <p>include <code>jquery.js</code>and<code>jquery.ui.js</code> after jq.schedule</p>
             <pre><code>&lt;script src=&quot;jquery-1.10.2.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;jquery-ui-1.10.4.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;../js/jq.schedule.js&quot;&gt;&lt;/script&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/style.css&quot; /&gt;</code></pre>
+&lt;script type=&quot;text/javascript&quot; src=&quot;../dist/js/jq.schedule.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../dist/css/style.min.css&quot; /&gt;</code></pre>
         </li>
         <li>
             <p>init scripts</p>
@@ -153,138 +153,143 @@ jQuery(document).ready(function(){
     </ol>
 
     <h2 id="option">Option</h2>
-    <p>
-    <table class="table table-striped">
-        <tr>
-            <th colspan="2">name</th>
-            <th width="80">Type</th>
-            <th>description</th>
-        </tr>
-        <tr>
-            <td colspan="2">startTime</td>
-            <td>String(HH:ii)</td>
-            <td>schedule start time</td>
-        </tr>
-        <tr>
-            <td colspan="2">endTime</td>
-            <td>String(HH:ii)</td>
-            <td>schedule end time</td>
-        </tr>
-        <tr>
-            <td colspan="2">widthTime</td>
+    <div class="p">
+        <table class="table table-striped">
+            <tr>
+                <th colspan="2">name</th>
+                <th width="80">Type</th>
+                <th>description</th>
+            </tr>
+            <tr>
+                <td colspan="2">className</td>
+                <td>String</td>
+                <td>add elemnt class(default jq.schedule)</td>
+            </tr>
+            <tr>
+                <td colspan="2">startTime</td>
+                <td>String(HH:ii)</td>
+                <td>schedule start time</td>
+            </tr>
+            <tr>
+                <td colspan="2">endTime</td>
+                <td>String(HH:ii)</td>
+                <td>schedule end time</td>
+            </tr>
+            <tr>
+                <td colspan="2">widthTime</td>
+                <td>Integer</td>
+                <td>minuite time line cell</td>
+            </tr>
+            <tr>
+                <td colspan="2">timeLineY</td>
+                <td>Integer</td>
+                <td>cell height px</td>
+            </tr>
+            <tr>
+                <td colspan="2">verticalScrollbar</td>
+                <td>Integer</td>
+                <td>scrollbar (px)</td>
+            </tr>
+            <tr>
+                <td colspan="2">timeLineBorder</td>
+                <td>Integer</td>
+                <td>border(top and bottom)</td>
+            </tr><tr>
+            <td colspan="2">bundleMoveWidth</td>
             <td>Integer</td>
-            <td>minuite time line cell</td>
+            <td>width to move all schedules to the right of the clicked time line cell.
+            </td>
         </tr>
-        <tr>
-            <td colspan="2">timeLineY</td>
-            <td>Integer</td>
-            <td>cell height px</td>
-        </tr>
-        <tr>
-            <td colspan="2">verticalScrollbar</td>
-            <td>Integer</td>
-            <td>scrollbar (px)</td>
-        </tr>
-        <tr>
-            <td colspan="2">timeLineBorder</td>
-            <td>Integer</td>
-            <td>border(top and bottom)</td>
-        </tr><tr>
-        <td colspan="2">bundleMoveWidth</td>
-        <td>Integer</td>
-        <td>width to move all schedules to the right of the clicked time line cell.
-        </td>
-    </tr>
-        <tr>
-            <td colspan="2">debug</td>
-            <td>String,element</td>
-            <td>debug string output elements</td>
-        </tr>
-        <tr>
-            <td rowspan="3">rows</td>
-            <td></td>
-            <td>Array</td>
-            <td>Schedule Data</td>
-        </tr>
-        <tr>
-            <td>title</td>
-            <td>String</td>
-            <td>Schedule Left Cell Text</td>
-        </tr>
-        <tr>
-            <td>schedule</td>
-            <td>Array</td>
-            <td>Schedule Cell Data</td>
-        </tr>
-        <tr>
-            <td colspan="2">change</td>
-            <td>function</td>
-            <td>callback change time</td>
-        </tr>
-        <tr>
-            <td colspan="2">click</td>
-            <td>function</td>
-            <td>callback click time</td>
-        </tr>
-        <tr>
-            <td colspan="2">time_click</td>
-            <td>function</td>
-            <td>callback timebar click</td>
-        </tr>
-        <tr>
-            <td colspan="2">append</td>
-            <td>function</td>
-            <td>callback append time</td>
-        </tr>
-    </table>
-    </p>
+            <tr>
+                <td colspan="2">debug</td>
+                <td>String,element</td>
+                <td>debug string output elements</td>
+            </tr>
+            <tr>
+                <td rowspan="3">rows</td>
+                <td></td>
+                <td>Array</td>
+                <td>Schedule Data</td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td>String</td>
+                <td>Schedule Left Cell Text</td>
+            </tr>
+            <tr>
+                <td>schedule</td>
+                <td>Array</td>
+                <td>Schedule Cell Data</td>
+            </tr>
+            <tr>
+                <td colspan="2">change</td>
+                <td>function</td>
+                <td>callback change time</td>
+            </tr>
+            <tr>
+                <td colspan="2">click</td>
+                <td>function</td>
+                <td>callback click time</td>
+            </tr>
+            <tr>
+                <td colspan="2">time_click</td>
+                <td>function</td>
+                <td>callback timebar click</td>
+            </tr>
+            <tr>
+                <td colspan="2">append</td>
+                <td>function</td>
+                <td>callback append time</td>
+            </tr>
+        </table>
+    </div>
 
-    <h2 id="option">Schedule Data</h2>
-    <p>
-    <table class="table table-striped">
-        <tr>
-            <th colspan="2">name</th>
-            <th width="80">Type</th>
-            <th>description</th>
-        </tr>
-        <tr>
-            <td colspan="2">title</td>
-            <td>String</td>
-            <td>Visible Text Schedule Bar</td>
-        </tr>
-        <tr>
-            <td colspan="2">class</td>
-            <td>String</td>
-            <td>add class name</td>
-        </tr>
-        <tr>
-            <td rowspan="5">schedule</td>
-            <td colspan="2">array</td>
-            <td>add schedule data</td>
-        </tr>
-        <tr>
-            <td>start</td>
-            <td>String</td>
-            <td>time String(HH:ii)</td>
-        </tr>
-        <tr>
-            <td>end</td>
-            <td>String</td>
-            <td>time String(HH:ii)</td>
-        </tr>
-        <tr>
-            <td>text</td>
-            <td>String</td>
-            <td>Show Text</td>
-        </tr>
-        <tr>
-            <td>data</td>
-            <td>Object,Array</td>
-            <td>callback data Object</td>
-        </tr>
-    </table>
-    </p>
-    <!-- /container --></div>
+    <h2 id="data">Schedule Data</h2>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th colspan="2">name</th>
+                <th width="80">Type</th>
+                <th>description</th>
+            </tr>
+            <tr>
+                <td colspan="2">title</td>
+                <td>String</td>
+                <td>Visible Text Schedule Bar</td>
+            </tr>
+            <tr>
+                <td colspan="2">class</td>
+                <td>String</td>
+                <td>add class name</td>
+            </tr>
+            <tr>
+                <td rowspan="5">schedule</td>
+                <td colspan="2">array</td>
+                <td>add schedule data</td>
+            </tr>
+            <tr>
+                <td>start</td>
+                <td>String</td>
+                <td>time String(HH:ii)</td>
+            </tr>
+            <tr>
+                <td>end</td>
+                <td>String</td>
+                <td>time String(HH:ii)</td>
+            </tr>
+            <tr>
+                <td>text</td>
+                <td>String</td>
+                <td>Show Text</td>
+            </tr>
+            <tr>
+                <td>data</td>
+                <td>Object,Array</td>
+                <td>callback data Object</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 
 <div id="footer">

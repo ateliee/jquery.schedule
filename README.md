@@ -26,13 +26,13 @@ npm i jq.schedule --save
 
 append head css
 ```
-<link rel="stylesheet" type="text/css" href="./jquery.schedule/css/style.css" />
+<link rel="stylesheet" type="text/css" href="./jquery.schedule/dist/css/style.min.css" />
 ```
 
 insert body
 ```
 <div id="schedule"></div>
-<script type="text/javascript" src="./jquery.schedule/js/jq.schedule.js"></script>
+<script type="text/javascript" src="./jquery.schedule/dist/js/jq.schedule.min.js"></script>
 <script type="text/javascript">
     $(function(){
         var $sc = jQuery("#schedule").timeSchedule({
@@ -103,6 +103,7 @@ insert body
 
 |Key|Value|Description|
 |---|------|----------|
+|className|jq-schedule|add elemnt class(default jq.schedule)|
 |startTime|07:00|schedule start time(HH:ii)|
 |endTime|21:00|schedule end time(HH:ii)|
 |widthTime|600|cell timestamp example 10 minutes|
@@ -145,3 +146,10 @@ on add schedule bar callback
 
 #### time_click(node: Element, data: Object)
 on click schedule row callback
+
+## For Development
+
+run server browser-sync
+```
+npm run serve
+```

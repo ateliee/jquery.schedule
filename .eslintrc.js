@@ -1,18 +1,17 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "node": false,
-        'jquery': true
-    },
-    'extends': [
-        'airbnb-base/legacy',
+    "extends": [
+        "eslint:recommended"
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly",
-        "console": true,
+    "plugins": [
+
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
     },
-    "rules": {
-        indent: [2, 4]
+    "env": {
+        "node": true
+    },
+    "globals": {
+
     }
 };

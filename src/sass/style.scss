@@ -1,0 +1,157 @@
+// variable
+$schedule-bg-color: #f0f0f0;
+$schedule-border-color: #ccc;
+$schedule-box-max-height: 500px;
+$schedule-box-header-color: #fff;
+$schedule-box-header-bg-color: #333;
+$schedule-header-height: 26px;
+$schedule-header-bg-color: #333;
+
+// styles
+.jq-schedule {
+  .clear {
+    clear: both;
+    height: 0;
+    line-height: 0;
+  }
+
+  .sc_menu {
+    width: 100%;
+    height: $schedule-header-height;
+
+    .sc_header_cell {
+      float: left;
+    }
+
+    .sc_header {
+      float: left;
+      height: $schedule-header-height;
+      position: relative;
+      overflow: hidden;
+
+      .sc_time {
+        text-align: center;
+        border-left: solid 1px #FFF;
+        background: $schedule-header-bg-color;
+      }
+    }
+  }
+
+  .sc_menu .sc_header_cell,
+  .sc_data {
+    float: left;
+    font-weight: bold;
+    color: $schedule-box-header-color;
+    background: $schedule-box-header-bg-color;
+    position: relative;
+  }
+
+  .sc_menu .sc_header_scroll,
+  .sc_data .sc_data_scroll {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .sc_menu .sc_header_cell,
+  .sc_header .sc_time,
+  .sc_main_scroll .sc_time {
+    color: #FFFFFF;
+    padding: 4px 0;
+    line-height: 18px;
+    height: 18px;
+    display: block;
+  }
+
+  .sc_header .sc_time,
+  .sc_main_scroll .sc_time {
+    float: left;
+  }
+
+  .sc_main_box,
+  .sc_data {
+    max-height: $schedule-box-max-height;
+    overflow: hidden;
+  }
+
+  .sc_main_box {
+    float: left;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .sc_main {
+    position: relative;
+  }
+
+  .timeline {
+    position: relative;
+  }
+
+  .ui-draggable-dragging,
+  .ui-resizeable {
+    z-index: 20;
+  }
+
+  .sc_bar {
+    position: absolute;
+    color: #FFF;
+    background: #4f93d6;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 2px 2px 4px #333;
+    -moz-box-shadow: 2px 2px 4px #333;
+    -webkit-box-shadow: 2px 2px 4px #333;
+
+    .head {
+      display: block;
+      padding: 6px 8px 0;
+      font-size: 12px;
+      height: 16px;
+      overflow: hidden;
+    }
+
+    .text {
+      display: block;
+      padding: 5px 15px 0;
+      font-weight: bold;
+      height: 18px;
+      overflow: hidden;
+    }
+  }
+  .timeline,
+  .sc_main .tb {
+    border-bottom: solid 2px #666;
+  }
+  .sc_data {
+    .timeline {
+      overflow: hidden;
+      span {
+        padding: 10px;
+        display: block;
+        &.photo{
+          float: left;
+          width: 36px;
+          height: 36px;
+          padding: 10px 0 10px 10px;
+        }
+        &.title{
+          float: left;
+          padding: 10px 0 10px 10px;
+          width: 92px;
+        }
+      }
+    }
+  }
+  .sc_main_scroll .sc_main{
+    .tl {
+      float: left;
+      height: 100%;
+      border-right: solid 1px $schedule-border-color;
+
+      &:hover {
+        background: $schedule-bg-color;
+      }
+    }
+  }
+}
