@@ -108,7 +108,7 @@
          * @param data
          * @returns {number}
          */
-        addScheduleData: function (data) {
+        addScheduleData: function (timeline, data) {
             var st = Math.ceil((data.start - tableStartTime) / setting.widthTime);
             var et = Math.floor((data.end - tableStartTime) / setting.widthTime);
             var $bar = $('<div class="sc_bar"><span class="head"><span class="time"></span></span><span class="text"></span></div>');
@@ -129,9 +129,14 @@
                 $bar.addClass(data.class);
             }
             // $element.find('.sc_main').append($bar);
-            $element.find('.sc_main .timeline').eq(data.timeline).append($bar);
+            var $row = $element.find('.sc_main .timeline').eq(timeline);
+            $row.append($bar);
             // データの追加
             scheduleData.push(data);
+            // コールバックがセットされていたら呼出
+            if (setting.append_schedule) {
+                setting.append_schedule($row, data);
+            }
             // key
             var key = scheduleData.length - 1;
             $bar.data('sc_key', key);
@@ -334,7 +339,6 @@
                     var e = methods.calcStringTime(bdata.end);
 
                     var data = {};
-                    data.timeline = id;
                     data.start = s;
                     data.end = e;
                     if (bdata.text) {
@@ -344,7 +348,7 @@
                     if (bdata.data) {
                         data.data = bdata.data;
                     }
-                    methods.addScheduleData.apply(element, [data]);
+                    methods.addScheduleData.apply(element, [id, data]);
                 }
             }
             // 高さの調整
@@ -576,6 +580,7 @@
                 change: null,
                 click: null,
                 append: null,
+                append_schedule: null,
                 time_click: null,
                 debug: '' // debug selecter
             }, options);
