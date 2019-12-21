@@ -1,6 +1,6 @@
 {
   "name": "jq.schedule",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "jQuery time schedule plugin",
   "main": "js/index.js",
   "scripts": {
@@ -40,6 +40,9 @@
     "gulp": "4.0.2",
     "gulp-plumber": "1.2.1",
     "gulp-rename": "2.0.0",
-    "gulp-uglify": "3.0.2"
-  }
+    "gulp-uglify": "3.0.2",
+    "pre-commit": "1.2.2"
+  },
+  "pre-commit": [
+  ]
 }

@@ -2,3 +2,4 @@
 .css/
 demo/
 node_modules
+dist

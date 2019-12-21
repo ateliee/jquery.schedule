@@ -129,7 +129,7 @@ insert body
 |text|string|Bar Title|
 |data|object|bind data|
 
-### Methods
+### Callback Methods
 
 #### change(node: Element, data: Object)
 on change schedule bar callback

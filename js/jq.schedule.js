@@ -4,25 +4,30 @@
             rows : {},
             startTime: "07:00",
             endTime: "19:30",
-            widthTimeX:25,		// 1cell辺りの幅(px)
-            widthTime:600,		// 区切り時間(秒)
-            timeLineY:50,		// timeline height(px)
-            timeLineBorder:1,	// timeline height border
-            timeBorder:1,		// border width
-            timeLinePaddingTop:0,
-            timeLinePaddingBottom:0,
-            headTimeBorder:1,	// time border width
-            dataWidth:160,		// data width
-            verticalScrollbar:0,	// vertical scrollbar width
-            bundleMoveWidth:1,  // width to move all schedules to the right of the clicked time cell
+            widthTimeX: 25,     // 1cell辺りの幅(px)
+            widthTime: 600,     // 区切り時間(秒)
+            timeLineY: 50,      // timeline height(px)
+            timeLineBorder: 1,  // timeline height border
+            timeBorder: 1,      // border width
+            timeLinePaddingTop: 0,
+            timeLinePaddingBottom: 0,
+            headTimeBorder: 1,  // time border width
+            dataWidth: 160,     // data width
+            verticalScrollbar: 0,   // vertical scrollbar width
+            bundleMoveWidth: 1,  // width to move all schedules to the right of the clicked time cell
             // event
             init_data: null,
             change: null,
             click: null,
             append: null,
             time_click: null,
-            debug:""			// debug selecter
+            debug: ""           // debug selecter
         };
+        /**
+         *
+         * @param {string} string
+         * @returns {number}
+         */
         this.calcStringTime = function(string) {
             var slice = string.split(':');
             var h = Number(slice[0]) * 60 * 60;
@@ -30,6 +35,11 @@
             var min = h + i;
             return min;
         };
+        /**
+         *
+         * @param {number} min
+         * @returns {string}
+         */
         this.formatTime = function(min) {
             var h = "" + (min/36000|0) + (min/3600%10|0);
             var i = "" + (min%3600/600|0) + (min%3600/60%10|0);
@@ -49,13 +59,26 @@
         tableStartTime -= (tableStartTime % setting.widthTime);
         tableEndTime -= (tableEndTime % setting.widthTime);
 
+        /**
+         *
+         * @returns {any[]}
+         */
         this.getScheduleData = function(){
             return scheduleData;
-        }
+        };
+        /**
+         *
+         * @returns {any[]}
+         */
         this.getTimelineData = function(){
             return timelineData;
-        }
-        // 現在のタイムライン番号を取得
+        };
+        /**
+         * 現在のタイムライン番号を取得
+         *
+         * @param top
+         * @returns {number}
+         */
         this.getTimeLineNumber = function(top){
             var num = 0;
             var n = 0;
@@ -76,8 +99,12 @@
                 num ++;
             }
             return num;
-        }
-        // 背景データ追加
+        };
+        /**
+         * 背景データ追加
+         *
+         * @param data
+         */
         this.addScheduleBgData = function(data){
             var st = Math.ceil((data["start"] - tableStartTime) / setting.widthTime);
             var et = Math.floor((data["end"] - tableStartTime) / setting.widthTime);
@@ -99,8 +126,13 @@
             }
             //$element.find('.sc_main').append($bar);
             $element.find('.sc_main .timeline').eq(data["timeline"]).append($bar);
-        }
-        // スケジュール追加
+        };
+        /**
+         * スケジュール追加
+         *
+         * @param data
+         * @returns {number}
+         */
         this.addScheduleData = function(data){
             var st = Math.ceil((data["start"] - tableStartTime) / setting.widthTime);
             var et = Math.floor((data["end"] - tableStartTime) / setting.widthTime);
@@ -247,7 +279,12 @@
             });
             return key;
         };
-        // スケジュール数の取得
+        /**
+         * スケジュール数の取得
+         *
+         * @param {number} n row number
+         * @returns {number}
+         */
         this.getScheduleCount = function(n){
             var num = 0;
             for(var i in scheduleData){
@@ -257,7 +294,12 @@
             }
             return num;
         };
-        // add
+        /**
+         * add rows
+         *
+         * @param timeline
+         * @param row
+         */
         this.addRow = function(timeline,row){
             var title = row["title"];
             var id = $element.find('.sc_main .timeline').length;
@@ -356,6 +398,10 @@
                 });
             }
         };
+        /**
+         *
+         * @returns {any[]}
+         */
         this.getScheduleData = function(){
             var data = new Array();
 
@@ -378,7 +424,12 @@
 
             return data;
         };
-        // テキストの変更
+        /**
+         * テキストの変更
+         *
+         * @param node
+         * @param data
+         */
         this.rewriteBarText = function(node,data){
             var x = node.position().left;
             var w = node.width();
@@ -387,7 +438,11 @@
             var end = start + (data["end"] - data["start"]);
             var html = element.formatTime(start)+"-"+element.formatTime(end);
             jQuery(node).find(".time").html(html);
-        }
+        };
+        /**
+         *
+         * @param n
+         */
         this.resetBarPosition = function(n){
             // 要素の並び替え
             var $bar_list = $element.find('.sc_main .timeline').eq(n).find(".sc_Bar");
@@ -440,7 +495,12 @@
             // 高さの調整
             this.resizeRow(n,check.length);
         };
-        this.resizeRow = function(n,height){
+        /**
+         *
+         * @param n
+         * @param height
+         */
+        this.resizeRow = function(n, height){
             //var h = Math.max(element.getScheduleCount(n),1);
             var h = Math.max(height,1);
             $element.find('.sc_data .timeline').eq(n).height((h * setting.timeLineY) - setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
@@ -451,8 +511,10 @@
             });
 
             $element.find(".sc_data").height($element.find(".sc_main_box").height());
-        }
-        // resizeWindow
+        };
+        /**
+         * resizeWindow
+         */
         this.resizeWindow = function(){
             var sc_width = $element.width();
             var sc_main_width = sc_width - setting.dataWidth - (setting.verticalScrollbar);
@@ -465,7 +527,13 @@
             $element.find(".sc_main_scroll").width(setting.widthTimeX*cell_num);
 
         };
-        // move all cells of the right of the specified time line cell
+        /**
+         * move all cells of the right of the specified time line cell
+         *
+         * @param timeline
+         * @param baseTimeLineCell
+         * @param moveWidth
+         */
         this.moveSchedules = function(timeline, baseTimeLineCell, moveWidth){
             var $bar_list = $element.find('.sc_main .timeline').eq(timeline).find(".sc_Bar");
             for(var i=0;i<$bar_list.length;i++){
@@ -488,7 +556,9 @@
             }
             element.resetBarPosition(timeline);
         };
-        // init
+        /**
+         * initialize
+         */
         this.init = function(){
             var html = '';
             html += '<div class="sc_menu">'+"\n";
