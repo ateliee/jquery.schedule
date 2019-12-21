@@ -57,8 +57,9 @@ gulp.task('browser-sync', function() {
         startPath: './demo'
     });
 });
-gulp.task('bs-reload', function () {
+gulp.task('bs-reload', function (done) {
     browserSync.reload();
+    done();
 });
 
 // Watch scss AND html files, doing different things with each.
@@ -69,6 +70,9 @@ gulp.task('watch', function (done) {
     ));
     gulp.watch("./src/js/*.js", gulp.series(
         'js-minify',
+        'bs-reload'
+    ));
+    gulp.watch("./demo/*", gulp.series(
         'bs-reload'
     ));
     done();

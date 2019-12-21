@@ -66,19 +66,31 @@
                         ]
                     }
                 },
-                change: function(node,data){
+                change: function(node, data){
                     $("#logs").append($("<div>").text("change event:" + JSON.stringify(data)));
                 },
-                init_data: function(node,data){
+                init_data: function(node, data){
                     $("#logs").append($("<div>").text("init event:" + JSON.stringify(data)));
                 },
-                click: function(node,data){
+                click: function(node, data){
                     $("#logs").append($("<div>").text("click event:" + JSON.stringify(data)));
                 },
-                append: function(node,data){
+                append: function(node, data){
                     $("#logs").append($("<div>").text("append event:" + JSON.stringify(data)));
                 },
-                time_click: function(time,data){
+                append_schedule: function(node, data){
+                    $("#logs").append($("<div>").text("append schedule event:" + JSON.stringify(data)));
+                },
+                time_click: function(node, time, data){
+                    // var start = time;
+                    // var end = $(this).timeSchedule('formatTime', $(this).timeSchedule('calcStringTime', time) + 60);
+                    // $(this).timeSchedule('addScheduleData', 0, {
+                    //     start: start,
+                    //     end: end,
+                    //     text:'Insert Schedule',
+                    //     data:{
+                    //     }
+                    // });
                     $("#logs").append($("<div>").text("time click event:" + JSON.stringify(data)));
                 },
             });
@@ -240,6 +252,11 @@ jQuery(document).ready(function(){
                 <td colspan="2">append</td>
                 <td>function</td>
                 <td>callback append time</td>
+            </tr>
+            <tr>
+                <td colspan="2">append_schedule</td>
+                <td>function</td>
+                <td>callback append time data</td>
             </tr>
         </table>
     </div>

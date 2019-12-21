@@ -142,6 +142,9 @@ initialize data
 on click bar callback
 
 #### append(node: Element, data: Object)
+on add schedule row callback
+
+#### append_schedule(node: Element, data: Object)
 on add schedule bar callback
 
 #### time_click(node: Element, data: Object)

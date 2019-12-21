@@ -5,7 +5,7 @@
   "main": "js/index.js",
   "scripts": {
     "serve": "gulp serve",
-    "test": "echo \"Info: no test specified\" && exit 0",
+    "test": "npm run lint && npm run sass-lint",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix",
     "sass-lint": "sass-lint -v -q",
@@ -29,7 +29,8 @@
   },
   "homepage": "https://github.com/ateliee/jquery.schedule#readme",
   "dependencies": {
-    "jquery": ">=3.4.1"
+    "jquery": ">=3.4.1",
+    "jquery-ui-dist": "1.12.1"
   },
   "engines": {
     "node": "8.16.2",
@@ -53,7 +54,7 @@
     "sass-lint": "1.13.1"
   },
   "pre-commit": [
-    "sass-lint",
+    "test",
     "build"
   ]
 }
