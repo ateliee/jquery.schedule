@@ -5,7 +5,7 @@ jq.Schedule
 [![Build Status](https://travis-ci.com/ateliee/jquery.schedule.svg?branch=master)](https://travis-ci.com/ateliee/jquery.schedule)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-![](https://raw.githubusercontent.com/ateliee/jquery.schedule/master/demo/images.png)
+![](docs/img/sample.gif)
 
 jquery and html schedule calendar
 
