@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-  - '1.5'
   - '8.16.2'
 script:
   - echo "Running tests against $(node -v) ..."
