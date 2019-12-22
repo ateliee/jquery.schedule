@@ -1,6 +1,6 @@
 {
   "name": "jq.schedule",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "jQuery time schedule plugin",
   "main": "js/index.js",
   "scripts": {

@@ -385,7 +385,7 @@
             var $timeline = $(html);
             for (var t = tableStartTime; t < tableEndTime; t += setting.widthTime) {
                 var $tl = $('<div class="tl"></div>');
-                $tl.width(setting.widthTimeX - setting.timeBorder);
+                $tl.width(setting.widthTimeX);
 
                 $tl.data('time', methods.formatTime(t));
                 $tl.data('timeline', timeline);
@@ -652,7 +652,6 @@
                 '<div class="sc_header">' + '\n' +
                 '<div class="sc_header_scroll"></div>' + '\n' +
                 '</div>' + '\n' +
-                '<br class="clear" />' + '\n' +
                 '</div>' + '\n' +
                 '<div class="sc_wrapper">' + '\n' +
                 '<div class="sc_data">' + '\n' +
@@ -663,7 +662,6 @@
                 '<div class="sc_main"></div>' + '\n' +
                 '</div>' + '\n' +
                 '</div>' + '\n' +
-                '<br class="clear" />' + '\n' +
                 '</div>';
 
             $element.append(html);
@@ -688,7 +686,7 @@
                         t
                     );
                     var cellNum = Math.floor(cn / setting.widthTime);
-                    $time.width((cellNum * setting.widthTimeX) - setting.headTimeBorder);
+                    $time.width((cellNum * setting.widthTimeX));
                     $element.find('.sc_header_scroll').append($time);
 
                     beforeTime = t;

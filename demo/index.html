@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../dist/css/style.min.css" />
 
     <style>
@@ -33,33 +33,34 @@
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">jQ.Scuedule.js</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li class="active"><a href="#home">Home</a></li>
-                    <li><a href="#demo">Demo</a></li>
-                    <li><a href="#info">Get Start</a></li>
-                    <li><a href="#option">Option</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
+            <a class="navbar-brand" href="#">jQ.Scuedule.js</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#home">Home</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#info">Get Start</a></li>
+                <li><a href="#option">Option</a></li>
+            </ul>
         </div>
     </div>
 </div>
 <div class="container">
-    <div class="hero-unit" style="padding-bottom: 16px; padding-top: 24px;">
-        <h1 id="home" style="padding-bottom: 16px">jq.Schedule</h1>
+    <div class="jumbotron" style="padding-bottom: 16px; padding-top: 24px;">
+        <h1 id="home" class="h2" style="padding-bottom: 16px">jq.Schedule</h1>
         <p>javascript base time schedule plugin.</p>
-        <p>Drag and Drop Support</p>
-        <p>Resize Schedule</p>
-        <p>Ajax Support(Callback Event Option)</p>
-        <div style="padding-bottom: 16px"><button onclick="javascript:location.href='https://github.com/ateliee/jquery.schedule';" class="btn btn-large btn-primary" type="button">Download jq.Schedule</button></div>
+        <p>
+            Drag and Drop Support/Resize Schedule/Ajax Support(Callback Event Option)
+        </p>
+        <div style="padding-bottom: 16px"><button onclick="javascript:location.href='https://github.com/ateliee/jquery.schedule';" class="btn btn-lg btn-primary" type="button">Download jq.Schedule</button></div>
         <div>
             <iframe src="https://ghbtns.com/github-btn.html?user=ateliee&repo=jquery.schedule&type=star&count=true&size=large" frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
             <iframe src="https://ghbtns.com/github-btn.html?user=ateliee&repo=jquery.schedule&type=watch&count=true&size=large&v=2" frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
@@ -72,8 +73,8 @@
     <div style="padding: 0 0 40px;">
         <button id="event_timelineData" class="btn btn-info">timelineData()</button>
         <button id="event_scheduleData" class="btn btn-info">scheduleData()</button>
-        <button id="event_setDraggable" class="btn btn-info">setDraggable()</button>
-        <button id="event_setResizable" class="btn btn-info">setResizable()</button>
+        <button id="event_setDraggable" class="btn btn-info">toggleDraggable</button>
+        <button id="event_setResizable" class="btn btn-info">toggleResizable</button>
         <button id="event_resetData" class="btn btn-danger">resetData()</button>
 
     </div>
@@ -84,7 +85,7 @@
                 <h3>Log</h3>
             </div>
             <div class="col-md-4 text-right">
-                <a class="btn" id="clear-logs">clear</a>
+                <a class="btn btn-default" style="margin-top: 16px;" id="clear-logs">clear</a>
             </div>
         </div>
         <div style="padding: 12px 0 0;">
@@ -304,32 +305,32 @@ $(function(){
             resizable: isResizable,
             rows : {
                 '0' : {
-                    title : 'Title Area',
+                    title : 'Title Area1',
                     schedule:[
                         {
-                            start:'09:00',
-                            end:'12:00',
-                            text:'Text Area',
-                            data:{
+                            start: '09:00',
+                            end: '12:00',
+                            text: 'Text Area',
+                            data: {
                             }
                         },
                         {
-                            start:'11:00',
-                            end:'14:00',
-                            text:'Text Area',
-                            data:{
+                            start: '11:00',
+                            end: '14:00',
+                            text: 'Text Area',
+                            data: {
                             }
                         }
                     ]
                 },
                 '1' : {
-                    title : 'Title Area',
+                    title : 'Title Area2',
                     schedule:[
                         {
-                            start:'16:00',
-                            end:'17:00',
-                            text:'Text Area',
-                            data:{
+                            start: '16:00',
+                            end: '17:00',
+                            text: 'Text Area',
+                            data: {
                             }
                         }
                     ]

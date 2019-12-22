@@ -12,12 +12,23 @@ $schedule-bar-bg-color: #4f93d6;
 $schedule-bar-shadow-enable: false;
 $schedule-bar-shadow-color: #333;
 
+@mixin clearfix() {
+  //*zoom: 1;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 // styles
 .jq-schedule {
-  .clear {
-    clear: both;
-    height: 0;
-    line-height: 0;
+  * {
+    box-sizing: border-box;
+  }
+  .sc_wrapper,
+  .sc_menu{
+    @include clearfix();
   }
 
   .sc_menu {
@@ -62,9 +73,9 @@ $schedule-bar-shadow-color: #333;
   .sc_header .sc_time,
   .sc_main_scroll .sc_time {
     color: $schedule-bar-color;
-    padding: 4px 0;
-    line-height: 18px;
-    height: 18px;
+    padding: 0;
+    line-height: $schedule-header-height;
+    height: $schedule-header-height;
     display: block;
   }
 
@@ -114,7 +125,7 @@ $schedule-bar-shadow-color: #333;
       display: block;
       padding: 6px 8px 0;
       font-size: 12px;
-      height: 16px;
+      height: 22px;
       overflow: hidden;
     }
 
@@ -122,7 +133,7 @@ $schedule-bar-shadow-color: #333;
       display: block;
       padding: 5px 15px 0;
       font-weight: bold;
-      height: 18px;
+      height: 24px;
       overflow: hidden;
     }
   }

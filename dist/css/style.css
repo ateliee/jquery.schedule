@@ -1,7 +1,11 @@
-.jq-schedule .clear {
-  clear: both;
-  height: 0;
-  line-height: 0; }
+.jq-schedule * {
+  box-sizing: border-box; }
+
+.jq-schedule .sc_wrapper:after,
+.jq-schedule .sc_menu:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 .jq-schedule .sc_menu {
   width: 100%;
@@ -36,9 +40,9 @@
 .jq-schedule .sc_header .sc_time,
 .jq-schedule .sc_main_scroll .sc_time {
   color: #fff;
-  padding: 4px 0;
-  line-height: 18px;
-  height: 18px;
+  padding: 0;
+  line-height: 26px;
+  height: 26px;
   display: block; }
 
 .jq-schedule .sc_header .sc_time,
@@ -75,13 +79,13 @@
     display: block;
     padding: 6px 8px 0;
     font-size: 12px;
-    height: 16px;
+    height: 22px;
     overflow: hidden; }
   .jq-schedule .sc_bar .text {
     display: block;
     padding: 5px 15px 0;
     font-weight: bold;
-    height: 18px;
+    height: 24px;
     overflow: hidden; }
 
 .jq-schedule .timeline,
