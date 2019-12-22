@@ -74,18 +74,21 @@
   color: #fff;
   background: #4f93d6;
   cursor: pointer;
-  z-index: 10; }
+  z-index: 10;
+  overflow: hidden; }
   .jq-schedule .sc_bar .head {
     display: block;
-    padding: 6px 8px 0;
+    margin-top: 6px;
+    padding: 0 8px 0;
     font-size: 12px;
-    height: 22px;
+    height: 1.2em;
     overflow: hidden; }
   .jq-schedule .sc_bar .text {
     display: block;
-    padding: 5px 15px 0;
+    margin-top: 6px;
+    padding: 0 16px 0;
     font-weight: bold;
-    height: 24px;
+    height: 1.2em;
     overflow: hidden; }
 
 .jq-schedule .timeline,
