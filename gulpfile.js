@@ -6,6 +6,7 @@ let plumber = require('gulp-plumber');
 let shell = require('gulp-shell');
 let sass = require('gulp-sass');
 let browserSync = require('browser-sync');
+let tagVersion = require('gulp-tag-version');
 
 // js minify
 gulp.task('js-minify', function () {
@@ -46,6 +47,9 @@ gulp.task('build', gulp.series(
         'sass-minify'
     )
 ));
+gulp.task('tag', function() {
+    return gulp.src(['./package.json']).pipe(tagVersion());
+});
 
 // Static server
 gulp.task('browser-sync', function() {
