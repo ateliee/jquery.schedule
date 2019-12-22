@@ -115,6 +115,8 @@ insert body
 |bundleMoveWidth|6|width to move all schedules to the right of the clicked time line cell|
 |debug|#debug|debug string output elements|
 |rows|{object}|schedule data|
+|draggable|{boolean}|enable draggable(default true)|
+|resizable|{boolean}|enable resizable(default true)|
 
 ### Schedule Data
 
@@ -177,6 +179,14 @@ $("#schedule").timeSchedule('addSchedule', timeline, {
     text:'Insert Schedule',
     data:{}
 });
+```
+
+#### switch setting
+```
+$("#schedule").timeSchedule('setDraggable', true or false);
+```
+```
+$("#schedule").timeSchedule('setResizable', true or false);
 ```
 
 ## For Development

@@ -161,4 +161,13 @@ $schedule-bar-shadow-color: #333;
       }
     }
   }
+  .ui-state-disabled{
+    opacity: 1;
+    .ui-resizable-handle:hover{
+      cursor: auto;
+    }
+  }
+  .ui-draggable-disabled{
+    opacity: 0.8;
+  }
 }

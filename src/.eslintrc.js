@@ -34,6 +34,7 @@ module.exports = {
         "max-len": ["error", {code: 180}],
         "no-param-reassign": "warn",
         "no-else-return": "warn",
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "no-unneeded-ternary": "off"
     }
 };

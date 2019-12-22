@@ -97,6 +97,36 @@
             return this;
         },
         /**
+         * switch draggable
+         * @param {boolean} enable
+         */
+        setDraggable: function(enable){
+            var e = enable ? true : false;
+            if(e !== setting.draggable){
+                setting.draggable = e;
+                if(e){
+                    $element.find('.sc_bar').draggable('enable');
+                }else{
+                    $element.find('.sc_bar').draggable('disable');
+                }
+            }
+        },
+        /**
+         * switch resizable
+         * @param {boolean} enable
+         */
+        setResizable: function(enable){
+            var e = enable ? true : false;
+            if(e !== setting.resizable){
+                setting.resizable = e;
+                if(e){
+                    $element.find('.sc_bar').resizable('enable');
+                }else{
+                    $element.find('.sc_bar').resizable('disable');
+                }
+            }
+        },
+        /**
          * 現在のタイムライン番号を取得
          *
          * @param top
@@ -306,6 +336,12 @@
                     }
                 }
             });
+            if(setting.draggable === false){
+                $node.draggable('disable');
+            }
+            if(setting.resizeable === false){
+                $node.resizeable('resizeable');
+            }
             return key;
         },
         /**
@@ -595,6 +631,8 @@
                 dataWidth: 160, // data width
                 verticalScrollbar: 0, // vertical scrollbar width
                 bundleMoveWidth: 1, // width to move all schedules to the right of the clicked time cell
+                draggable: true,
+                resizable: true,
                 // event
                 onInitRow: null,
                 onChange: null,

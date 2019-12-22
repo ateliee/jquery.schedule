@@ -72,7 +72,10 @@
     <div style="padding: 0 0 40px;">
         <button id="event_timelineData" class="btn btn-info">timelineData()</button>
         <button id="event_scheduleData" class="btn btn-info">scheduleData()</button>
+        <button id="event_setDraggable" class="btn btn-info">setDraggable()</button>
+        <button id="event_setResizable" class="btn btn-info">setResizable()</button>
         <button id="event_resetData" class="btn btn-danger">resetData()</button>
+
     </div>
     <div style="padding: 0 0 40px;">
         <div id="schedule"></div>
@@ -150,12 +153,23 @@ $(function(){
                 <td colspan="2">timeLineBorder</td>
                 <td>Integer</td>
                 <td>border(top and bottom)</td>
-            </tr><tr>
-            <td colspan="2">bundleMoveWidth</td>
-            <td>Integer</td>
-            <td>width to move all schedules to the right of the clicked time line cell.
-            </td>
-        </tr>
+            </tr>
+            <tr>
+                <td colspan="2">bundleMoveWidth</td>
+                <td>Integer</td>
+                <td>width to move all schedules to the right of the clicked time line cell.
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">draggable</td>
+                <td>Boolean</td>
+                <td>enable draggable</td>
+            </tr>
+            <tr>
+                <td colspan="2">resizable</td>
+                <td>Boolean</td>
+                <td>enable resizable</td>
+            </tr>
             <tr>
                 <td rowspan="3">rows</td>
                 <td></td>
@@ -276,6 +290,8 @@ $(function(){
     }
     $(function(){
         $("#logs").append('<table class="table">');
+        var isDraggable = true;
+        var isResizable = true;
         var $sc = $("#schedule").timeSchedule({
             startTime: "07:00", // schedule start time(HH:ii)
             endTime: "21:00",   // schedule end time(HH:ii)
@@ -284,6 +300,8 @@ $(function(){
             verticalScrollbar:20,   // scrollbar (px)
             timeLineBorder:2,   // border(top and bottom)
             bundleMoveWidth:6,  // width to move all schedules to the right of the clicked time line cell
+            draggable: isDraggable,
+            resizable: isResizable,
             rows : {
                 '0' : {
                     title : 'Title Area',
@@ -357,6 +375,16 @@ $(function(){
         });
         $('#event_resetData').on('click', function(){
             addLog('resetData', $sc.timeSchedule('resetData'));
+        });
+        $('#event_setDraggable').on('click', function(){
+            isDraggable = !isDraggable;
+            $sc.timeSchedule('setDraggable', isDraggable);
+            addLog('setDraggable', isDraggable ? 'enable' : 'disable');
+        });
+        $('#event_setResizable').on('click', function(){
+            isResizable = !isResizable;
+            $sc.timeSchedule('setResizable', isResizable);
+            addLog('setResizable', isResizable ? 'enable' : 'disable');
         });
         $('#clear-logs').on('click', function(){
             $('#logs .table').empty();
