@@ -1,0 +1,33 @@
+{
+  "0" : {
+    "title" : "Example1",
+    "schedule":[
+      {
+        "start": "11:00",
+        "end": "12:00",
+        "text": "Ajax Text Area",
+        "data": {
+        }
+      },
+      {
+        "start": "10:30",
+        "end": "15:00",
+        "text": "Ajax Text Area2",
+        "data": {
+        }
+      }
+    ]
+  },
+  "1" : {
+    "title" : "Example1",
+    "schedule":[
+      {
+        "start": "15:00",
+        "end": "18:00",
+        "text": "Text Area",
+        "data": {
+        }
+      }
+    ]
+  }
+}

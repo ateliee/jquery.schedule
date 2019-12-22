@@ -11,6 +11,7 @@ $schedule-bar-color: #fff;
 $schedule-bar-bg-color: #4f93d6;
 $schedule-bar-shadow-enable: false;
 $schedule-bar-shadow-color: #333;
+$schedule-bar-padding: 8px;
 
 @mixin clearfix() {
   //*zoom: 1;
@@ -115,6 +116,7 @@ $schedule-bar-shadow-color: #333;
     background: $schedule-bar-bg-color;
     cursor: pointer;
     z-index: 10;
+    overflow: hidden;
     @if $schedule-bar-shadow-enable {
       box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
       -moz-box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
@@ -123,17 +125,19 @@ $schedule-bar-shadow-color: #333;
 
     .head {
       display: block;
-      padding: 6px 8px 0;
+      margin-top: 6px;
+      padding: 0 $schedule-bar-padding 0;
       font-size: 12px;
-      height: 22px;
+      height: 1.2em;
       overflow: hidden;
     }
 
     .text {
       display: block;
-      padding: 5px 15px 0;
+      margin-top: 6px;
+      padding: 0 ($schedule-bar-padding * 2) 0;
       font-weight: bold;
-      height: 24px;
+      height: 1.2em;
       overflow: hidden;
     }
   }

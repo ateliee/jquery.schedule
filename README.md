@@ -171,6 +171,27 @@ var data = $("#schedule").timeSchedule('scheduleData');
 $("#schedule").timeSchedule('resetData');
 ```
 
+#### clear all data and row
+```
+$("#schedule").timeSchedule('resetRowData');
+```
+
+#### add row
+```
+$("#schedule").timeSchedule('addRow', timeline, {
+    title : 'Title Area',
+    schedule:[
+        {
+            start:'09:00',
+            end:'12:00',
+            text:'Text Area',
+            data:{
+            }
+        }
+    ]
+});
+```
+
 #### add data
 ```
 $("#schedule").timeSchedule('addSchedule', timeline, {

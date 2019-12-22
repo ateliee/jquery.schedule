@@ -28,6 +28,27 @@
         #schedule .sc_bar_insert{
             background-color: #ff678a;
         }
+        #schedule .example2{
+            background-color: #3eb698;
+        }
+        #schedule .example3{
+            color: #2c0000;
+            font-weight: bold;
+            background-color: #c7ae50;
+        }
+        #schedule .sc_bar.sc_bar_photo .head,
+        #schedule .sc_bar.sc_bar_photo .text{
+            padding-left: 60px;
+        }
+        #schedule .sc_bar.sc_bar_photo .photo{
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 38px;
+        }
+        #schedule .sc_bar.sc_bar_photo .photo img{
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -70,13 +91,20 @@
     <p>
         Example Sample Demo
     </p>
+    <h3>Method</h3>
     <div style="padding: 0 0 12px;">
         <button id="event_timelineData" class="btn btn-info" style="margin-bottom: 12px;">timelineData()</button>
         <button id="event_scheduleData" class="btn btn-info" style="margin-bottom: 12px;">scheduleData()</button>
         <button id="event_setDraggable" class="btn btn-info" style="margin-bottom: 12px;">toggleDraggable</button>
         <button id="event_setResizable" class="btn btn-info" style="margin-bottom: 12px;">toggleResizable</button>
         <button id="event_resetData" class="btn btn-danger" style="margin-bottom: 12px;">resetData()</button>
-
+        <button id="event_resetRowData" class="btn btn-danger" style="margin-bottom: 12px;">resetRowData()</button>
+    </div>
+    <h3>Ajax</h3>
+    <div style="padding: 0 0 12px;">
+        <button class="btn btn-info ajax-data" data-target="1.json" style="margin-bottom: 12px;">ajax1()</button>
+        <button class="btn btn-info ajax-data" data-target="2.json" style="margin-bottom: 12px;">ajax2()</button>
+        <button class="btn btn-info ajax-data" data-target="3.json" style="margin-bottom: 12px;">ajax3()</button>
     </div>
     <div style="padding: 0 0 40px;">
         <div id="schedule"></div>
@@ -286,7 +314,7 @@ $(function(){
     function addLog(type, message){
         var $log = $('<tr />');
         $log.append($('<th />').text(type));
-        $log.append($('<td />').text(JSON.stringify(message)));
+        $log.append($('<td />').text(message ? JSON.stringify(message) : ''));
         $("#logs table").prepend($log);
     }
     $(function(){
@@ -350,8 +378,14 @@ $(function(){
             },
             onAppendSchedule: function(node, data){
                 addLog('onAppendSchedule', data);
-                if(data.data.insert){
-                    node.addClass('sc_bar_insert');
+                if(data.data.class){
+                    node.addClass(data.data.class);
+                }
+                if(data.data.image){
+                    var $img = $('<div class="photo"><img></div>');
+                    $img.find('img').attr('src', data.data.image);
+                    node.prepend($img);
+                    node.addClass('sc_bar_photo');
                 }
             },
             onScheduleClick: function(node, time, timeline){
@@ -362,7 +396,7 @@ $(function(){
                     end: end,
                     text:'Insert Schedule',
                     data:{
-                        insert: true
+                        class: 'sc_bar_insert'
                     }
                 });
                 addLog('onScheduleClick', time + ' ' + timeline);
@@ -375,7 +409,12 @@ $(function(){
             addLog('scheduleData', $sc.timeSchedule('scheduleData'));
         });
         $('#event_resetData').on('click', function(){
-            addLog('resetData', $sc.timeSchedule('resetData'));
+            $sc.timeSchedule('resetData');
+            addLog('resetData');
+        });
+        $('#event_resetRowData').on('click', function(){
+            $sc.timeSchedule('resetRowData');
+            addLog('resetRowData');
         });
         $('#event_setDraggable').on('click', function(){
             isDraggable = !isDraggable;
@@ -386,6 +425,13 @@ $(function(){
             isResizable = !isResizable;
             $sc.timeSchedule('setResizable', isResizable);
             addLog('setResizable', isResizable ? 'enable' : 'disable');
+        });
+        $('.ajax-data').on('click', function(){
+            $.ajax({url: './data/'+$(this).attr('data-target')})
+                .done( (data) => {
+                    addLog('Ajax GetData', data);
+                    $sc.timeSchedule('setRows', data);
+                });
         });
         $('#clear-logs').on('click', function(){
             $('#logs .table').empty();

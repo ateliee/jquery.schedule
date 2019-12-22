@@ -97,6 +97,43 @@
             return this;
         },
         /**
+         * add schedule data
+         *
+         * @param {number} timeline
+         * @param {object} data
+         * @returns {methods}
+         */
+        addRow: function (timeline, data) {
+            methods._addRow.apply(this, [timeline, data]);
+            return this;
+        },
+        /**
+         * clear row
+         *
+         * @returns {methods}
+         */
+        resetRowData: function () {
+            scheduleData = [];
+            timelineData = [];
+            $element.find('.sc_bar').remove();
+            $element.find('.timeline').remove();
+            $element.find('.sc_data').height(0);
+            return this;
+        },
+        /**
+         * clear row
+         *
+         * @param {object} data
+         * @returns {methods}
+         */
+        setRows: function (data) {
+            methods.resetRowData.apply(this, []);
+            for (var timeline in data) {
+                methods.addRow.apply(this, [timeline, data[timeline]]);
+            }
+            return this;
+        },
+        /**
          * switch draggable
          * @param {boolean} enable
          */
@@ -311,12 +348,17 @@
                     var node = $(this);
                     node.data('resizeCheck', true);
                 },
+                resize: function (ev, ui) {
+                    // box-sizing: border-box; に対応
+                    ui.element.height(ui.size.height);
+                    ui.element.width(ui.size.width);
+                },
                 // 要素の移動が終った後の処理
                 stop: function () {
                     var node = $(this);
                     var scKey = node.data('sc_key');
                     var x = node.position().left;
-                    var w = node.width();
+                    var w = node.outerWidth();
                     var start = tableStartTime + (Math.floor(x / setting.widthTimeX) * setting.widthTime);
                     var end = tableStartTime + (Math.floor((x + w) / setting.widthTimeX) * setting.widthTime);
                     var timelineNum = scheduleData[scKey].timeline;
@@ -385,7 +427,7 @@
             var $timeline = $(html);
             for (var t = tableStartTime; t < tableEndTime; t += setting.widthTime) {
                 var $tl = $('<div class="tl"></div>');
-                $tl.width(setting.widthTimeX);
+                $tl.outerWidth(setting.widthTimeX);
 
                 $tl.data('time', methods.formatTime(t));
                 $tl.data('timeline', timeline);
@@ -523,9 +565,9 @@
                         $e2 = $($barList[c2]);
 
                         s1 = $e1.position().left;
-                        e1 = $e1.position().left + $e1.width();
+                        e1 = $e1.position().left + $e1.outerWidth();
                         s2 = $e2.position().left;
-                        e2 = $e2.position().left + $e2.width();
+                        e2 = $e2.position().left + $e2.outerWidth();
                         if (s1 < e2 && e1 > s2) {
                             next = true;
                             continue;
@@ -589,7 +631,7 @@
                 var $bar = $($barList[i]);
                 if (baseTimeLineCell.position().left <= $bar.position().left) {
                     var v1 = $bar.position().left + setting.widthTimeX * moveWidth;
-                    var v2 = Math.floor((tableEndTime - tableStartTime) / setting.widthTime) * setting.widthTimeX - $bar.width();
+                    var v2 = Math.floor((tableEndTime - tableStartTime) / setting.widthTime) * setting.widthTimeX - $bar.outerWidth();
                     $bar.css({
                         left: Math.max(0, Math.min(v1, v2))
                     });
