@@ -154,17 +154,17 @@ on click schedule row callback
 
 ### Methods
 
-#### get data
-```
-var data = $("#schedule").timeSchedule('timelineData');
-```
-
 #### get row data
 ```
 var data = $("#schedule").timeSchedule('timelineData');
 ```
 
-#### clear schedule data
+#### get schedule data
+```
+var data = $("#schedule").timeSchedule('scheduleData');
+```
+
+#### clear all data
 ```
 $("#schedule").timeSchedule('resetData');
 ```
