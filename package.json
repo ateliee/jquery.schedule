@@ -9,7 +9,8 @@
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix",
     "sass-lint": "sass-lint -v -q",
-    "build": "gulp build"
+    "build": "gulp build",
+    "git:tag": "gulp tag"
   },
   "repository": {
     "type": "git",
@@ -56,8 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test && npm run build",
-      "post-commit": "gulp tag"
+      "pre-commit": "npm test && npm run build"
     }
   }
 }
