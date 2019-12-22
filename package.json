@@ -1,6 +1,6 @@
 {
   "name": "jq.schedule",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "jQuery time schedule plugin",
   "main": "js/index.js",
   "scripts": {
@@ -21,7 +21,9 @@
     "front-end",
     "schedule",
     "calendar",
-    "web"
+    "web",
+    "ajax",
+    "responsible"
   ],
   "author": "ateliee <info@ateliee.com> (https://ateliee.com)",
   "license": "MIT",

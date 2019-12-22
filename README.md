@@ -9,7 +9,9 @@ jq.Schedule
 
 jquery and html schedule calendar
 
-javascript base time schedule plugin.
+* Drag and Drop Support
+* Resize Schedule
+* Ajax Get Data
 
 ## install
 
