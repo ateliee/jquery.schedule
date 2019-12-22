@@ -56,8 +56,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test && npm build",
-      "post-commit": "npm tag"
+      "pre-commit": "npm test && npm run build",
+      "post-commit": "gulp tag"
     }
   }
 }
