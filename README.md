@@ -5,7 +5,7 @@ jq.Schedule
 [![Build Status](https://travis-ci.com/ateliee/jquery.schedule.svg?branch=master)](https://travis-ci.com/ateliee/jquery.schedule)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-![](docs/img/preview.gif)
+![](docs/img/preview.png)
 
 jquery and html schedule calendar
 
@@ -35,7 +35,7 @@ insert body
 <script type="text/javascript" src="./jquery.schedule/dist/js/jq.schedule.min.js"></script>
 <script type="text/javascript">
     $(function(){
-        var $sc = jQuery("#schedule").timeSchedule({
+        var $sc = $("#schedule").timeSchedule({
             startTime: "07:00", // schedule start time(HH:ii)
             endTime: "21:00",   // schedule end time(HH:ii)
             widthTime:60 * 10,  // cell timestamp example 10 minutes
@@ -43,7 +43,6 @@ insert body
             verticalScrollbar:20,   // scrollbar (px)
             timeLineBorder:2,   // border(top and bottom)
             bundleMoveWidth:6,  // width to move all schedules to the right of the clicked time line cell
-            debug:"#debug",     // debug string output elements
             rows : {
                 '0' : {
                     title : 'Title Area',
@@ -77,21 +76,24 @@ insert body
                     ]
                 }
             },
-            change: function(node,data){
-                $("#logs").append($("<div>").text("change event:" + JSON.stringify(data)));
+            onChange: function(node, data){
+                addLog('onChange', data);
             },
-            init_data: function(node,data){
-                $("#logs").append($("<div>").text("init event:" + JSON.stringify(data)));
+            onInitRow: function(node, data){
+                addLog('onInitRow', data);
             },
-            click: function(node,data){
-                $("#logs").append($("<div>").text("click event:" + JSON.stringify(data)));
+            onClick: function(node, data){
+                addLog('onClick', data);
             },
-            append: function(node,data){
-                $("#logs").append($("<div>").text("append event:" + JSON.stringify(data)));
+            onAppendRow: function(node, data){
+                addLog('onAppendRow', data);
             },
-            time_click: function(time,data){
-                $("#logs").append($("<div>").text("time click event:" + JSON.stringify(data)));
+            onAppendSchedule: function(node, data){
+                addLog('onAppendSchedule', data);
             },
+            onScheduleClick: function(node, time, timeline){
+                addLog('onScheduleClick', time + ' ' + timeline);
+            }
         });
     });
 </script>
@@ -132,23 +134,50 @@ insert body
 
 ### Callback Methods
 
-#### change(node: Element, data: Object)
+#### onChange(node: Element, data: Object)
 on change schedule bar callback
 
-#### init_data(node: Element, data: Object)
+#### onInitRow(node: Element, data: Object)
 initialize data
 
-#### click(node: Element, data: Object)
+#### onClick(node: Element, data: Object)
 on click bar callback
 
-#### append(node: Element, data: Object)
+#### onAppendRow(node: Element, data: Object)
 on add schedule row callback
 
-#### append_schedule(node: Element, data: Object)
+#### onSppendSchedule(node: Element, data: Object)
 on add schedule bar callback
 
-#### time_click(node: Element, data: Object)
+#### onScheduleClick(node: Element, time: string, data: Object)
 on click schedule row callback
+
+### Methods
+
+#### get data
+```
+var data = $("#schedule").timeSchedule('timelineData');
+```
+
+#### get row data
+```
+var data = $("#schedule").timeSchedule('timelineData');
+```
+
+#### clear schedule data
+```
+$("#schedule").timeSchedule('resetData');
+```
+
+#### add data
+```
+$("#schedule").timeSchedule('addSchedule', timeline, {
+    start: start,
+    end: end,
+    text:'Insert Schedule',
+    data:{}
+});
+```
 
 ## For Development
 

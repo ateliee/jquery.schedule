@@ -33,6 +33,7 @@ module.exports = {
         "one-var-declaration-per-line": "off",
         "max-len": ["error", {code: 180}],
         "no-param-reassign": "warn",
-        "no-else-return": "warn"
+        "no-else-return": "warn",
+        "no-underscore-dangle": "off"
     }
 };

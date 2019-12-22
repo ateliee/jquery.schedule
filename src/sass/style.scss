@@ -1,11 +1,16 @@
 // variable
 $schedule-bg-color: #f0f0f0;
 $schedule-border-color: #ccc;
+$schedule-header-height: 26px;
+$schedule-header-bg-color: #555;
+$schedule-header-color: #fff;
 $schedule-box-max-height: 500px;
 $schedule-box-header-color: #fff;
-$schedule-box-header-bg-color: #333;
-$schedule-header-height: 26px;
-$schedule-header-bg-color: #333;
+$schedule-box-header-bg-color: #555;
+$schedule-bar-color: #fff;
+$schedule-bar-bg-color: #4f93d6;
+$schedule-bar-shadow-enable: false;
+$schedule-bar-shadow-color: #333;
 
 // styles
 .jq-schedule {
@@ -31,7 +36,7 @@ $schedule-header-bg-color: #333;
 
       .sc_time {
         text-align: center;
-        border-left: solid 1px #FFF;
+        border-left: solid 1px $schedule-header-color;
         background: $schedule-header-bg-color;
       }
     }
@@ -56,7 +61,7 @@ $schedule-header-bg-color: #333;
   .sc_menu .sc_header_cell,
   .sc_header .sc_time,
   .sc_main_scroll .sc_time {
-    color: #FFFFFF;
+    color: $schedule-bar-color;
     padding: 4px 0;
     line-height: 18px;
     height: 18px;
@@ -95,13 +100,15 @@ $schedule-header-bg-color: #333;
 
   .sc_bar {
     position: absolute;
-    color: #FFF;
-    background: #4f93d6;
+    color: $schedule-bar-color;
+    background: $schedule-bar-bg-color;
     cursor: pointer;
     z-index: 10;
-    box-shadow: 2px 2px 4px #333;
-    -moz-box-shadow: 2px 2px 4px #333;
-    -webkit-box-shadow: 2px 2px 4px #333;
+    @if $schedule-bar-shadow-enable {
+      box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
+      -moz-box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
+      -webkit-box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
+    }
 
     .head {
       display: block;

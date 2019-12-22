@@ -5,97 +5,30 @@
     <title>jq.Schedule Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script
-            src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript" language="javascript"></script>
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-
-    <script type="text/javascript" src="../dist/js/jq.schedule.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" type="text/css" href="../dist/css/style.min.css" />
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <style>
         body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         }
+        #logs{
+            border: solid 1px #bbb;
+            padding: 16px;
+            background: #eee;
+        }
+        #logs .table{
+            margin-bottom: 0;
+        }
+        #logs .table td,
+        #logs .table th{
+            border: none;
+        }
+        #schedule .sc_bar_insert{
+            background-color: #ff678a;
+        }
     </style>
-    <script type="text/javascript">
-        jQuery(document).ready(function(){
-            var $sc = jQuery("#schedule").timeSchedule({
-                startTime: "07:00", // schedule start time(HH:ii)
-                endTime: "21:00",   // schedule end time(HH:ii)
-                widthTime:60 * 10,  // cell timestamp example 10 minutes
-                timeLineY:60,       // height(px)
-                verticalScrollbar:20,   // scrollbar (px)
-                timeLineBorder:2,   // border(top and bottom)
-                bundleMoveWidth:6,  // width to move all schedules to the right of the clicked time line cell
-                debug:"#debug",     // debug string output elements
-                rows : {
-                    '0' : {
-                        title : 'Title Area',
-                        schedule:[
-                            {
-                                start:'09:00',
-                                end:'12:00',
-                                text:'Text Area',
-                                data:{
-                                }
-                            },
-                            {
-                                start:'11:00',
-                                end:'14:00',
-                                text:'Text Area',
-                                data:{
-                                }
-                            }
-                        ]
-                    },
-                    '1' : {
-                        title : 'Title Area',
-                        schedule:[
-                            {
-                                start:'16:00',
-                                end:'17:00',
-                                text:'Text Area',
-                                data:{
-                                }
-                            }
-                        ]
-                    }
-                },
-                change: function(node, data){
-                    $("#logs").append($("<div>").text("change event:" + JSON.stringify(data)));
-                },
-                init_data: function(node, data){
-                    $("#logs").append($("<div>").text("init event:" + JSON.stringify(data)));
-                },
-                click: function(node, data){
-                    $("#logs").append($("<div>").text("click event:" + JSON.stringify(data)));
-                },
-                append: function(node, data){
-                    $("#logs").append($("<div>").text("append event:" + JSON.stringify(data)));
-                },
-                append_schedule: function(node, data){
-                    $("#logs").append($("<div>").text("append schedule event:" + JSON.stringify(data)));
-                },
-                time_click: function(node, time, data){
-                    // var start = time;
-                    // var end = $(this).timeSchedule('formatTime', $(this).timeSchedule('calcStringTime', time) + 60);
-                    // $(this).timeSchedule('addScheduleData', 0, {
-                    //     start: start,
-                    //     end: end,
-                    //     text:'Insert Schedule',
-                    //     data:{
-                    //     }
-                    // });
-                    $("#logs").append($("<div>").text("time click event:" + JSON.stringify(data)));
-                },
-            });
-        });
-    </script>
 </head>
 <body>
 
@@ -120,7 +53,7 @@
     </div>
 </div>
 <div class="container">
-    <div class="hero-unit" style="padding-bottom: 16px;">
+    <div class="hero-unit" style="padding-bottom: 16px; padding-top: 24px;">
         <h1 id="home" style="padding-bottom: 16px">jq.Schedule</h1>
         <p>javascript base time schedule plugin.</p>
         <p>Drag and Drop Support</p>
@@ -137,11 +70,22 @@
         Example Sample Demo
     </p>
     <div style="padding: 0 0 40px;">
+        <button id="event_timelineData" class="btn btn-info">timelineData()</button>
+        <button id="event_scheduleData" class="btn btn-info">scheduleData()</button>
+        <button id="event_resetData" class="btn btn-danger">resetData()</button>
+    </div>
+    <div style="padding: 0 0 40px;">
         <div id="schedule"></div>
-        <h3>Log</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Log</h3>
+            </div>
+            <div class="col-md-4 text-right">
+                <a class="btn" id="clear-logs">clear</a>
+            </div>
+        </div>
         <div style="padding: 12px 0 0;">
-            <pre id="logs">
-            </pre>
+            <div id="logs"></div>
         </div>
     </div>
     <h2 id="info">Get Start</h2>
@@ -149,15 +93,15 @@
         <li><p>Please Download <a href="https://github.com/ateliee/jquery.schedule/archive/master.zip">jQuery.Schedule</a></p></li>
         <li>
             <p>include <code>jquery.js</code>and<code>jquery.ui.js</code> after jq.schedule</p>
-            <pre><code>&lt;script src=&quot;jquery-1.10.2.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;jquery-ui-1.10.4.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
+            <pre><code>&lt;script src=&quot;jquery-3.4.1.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;jquery-ui-2.3.2.js&quot; type=&quot;text/javascript&quot; language=&quot;javascript&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;../dist/js/jq.schedule.js&quot;&gt;&lt;/script&gt;
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../dist/css/style.min.css&quot; /&gt;</code></pre>
         </li>
         <li>
             <p>init scripts</p>
             <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-jQuery(document).ready(function(){
+$(function(){
     var $sc = jQuery(&quot;#schedule&quot;).timeSchedule($options);
 });
 &lt;/script&gt;</code></pre>
@@ -213,11 +157,6 @@ jQuery(document).ready(function(){
             </td>
         </tr>
             <tr>
-                <td colspan="2">debug</td>
-                <td>String,element</td>
-                <td>debug string output elements</td>
-            </tr>
-            <tr>
                 <td rowspan="3">rows</td>
                 <td></td>
                 <td>Array</td>
@@ -234,27 +173,32 @@ jQuery(document).ready(function(){
                 <td>Schedule Cell Data</td>
             </tr>
             <tr>
-                <td colspan="2">change</td>
+                <td colspan="2">onInitRow</td>
+                <td>function</td>
+                <td>callback init time</td>
+            </tr>
+            <tr>
+                <td colspan="2">onChange</td>
                 <td>function</td>
                 <td>callback change time</td>
             </tr>
             <tr>
-                <td colspan="2">click</td>
+                <td colspan="2">onClick</td>
                 <td>function</td>
                 <td>callback click time</td>
             </tr>
             <tr>
-                <td colspan="2">time_click</td>
+                <td colspan="2">onScheduleClick</td>
                 <td>function</td>
                 <td>callback timebar click</td>
             </tr>
             <tr>
-                <td colspan="2">append</td>
+                <td colspan="2">onAppendRow</td>
                 <td>function</td>
                 <td>callback append time</td>
             </tr>
             <tr>
-                <td colspan="2">append_schedule</td>
+                <td colspan="2">onAppendSchedule</td>
                 <td>function</td>
                 <td>callback append time data</td>
             </tr>
@@ -314,5 +258,110 @@ jQuery(document).ready(function(){
         <p class="muted credit">Copyright © 2014 <a href="https://github.com/ateliee" target="_blank">ateliee</a> inc. All Rights Reserved.</p>
     </div>
 </div>
+
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js" type="text/javascript" language="javascript"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../dist/js/jq.schedule.min.js"></script>
+<script type="text/javascript">
+    function addLog(type, message){
+        var $log = $('<tr />');
+        $log.append($('<th />').text(type));
+        $log.append($('<td />').text(JSON.stringify(message)));
+        $("#logs table").prepend($log);
+    }
+    $(function(){
+        $("#logs").append('<table class="table">');
+        var $sc = $("#schedule").timeSchedule({
+            startTime: "07:00", // schedule start time(HH:ii)
+            endTime: "21:00",   // schedule end time(HH:ii)
+            widthTime:60 * 10,  // cell timestamp example 10 minutes
+            timeLineY:60,       // height(px)
+            verticalScrollbar:20,   // scrollbar (px)
+            timeLineBorder:2,   // border(top and bottom)
+            bundleMoveWidth:6,  // width to move all schedules to the right of the clicked time line cell
+            rows : {
+                '0' : {
+                    title : 'Title Area',
+                    schedule:[
+                        {
+                            start:'09:00',
+                            end:'12:00',
+                            text:'Text Area',
+                            data:{
+                            }
+                        },
+                        {
+                            start:'11:00',
+                            end:'14:00',
+                            text:'Text Area',
+                            data:{
+                            }
+                        }
+                    ]
+                },
+                '1' : {
+                    title : 'Title Area',
+                    schedule:[
+                        {
+                            start:'16:00',
+                            end:'17:00',
+                            text:'Text Area',
+                            data:{
+                            }
+                        }
+                    ]
+                }
+            },
+            onChange: function(node, data){
+                addLog('onChange', data);
+            },
+            onInitRow: function(node, data){
+                addLog('onInitRow', data);
+            },
+            onClick: function(node, data){
+                addLog('onClick', data);
+            },
+            onAppendRow: function(node, data){
+                addLog('onAppendRow', data);
+            },
+            onAppendSchedule: function(node, data){
+                addLog('onAppendSchedule', data);
+                if(data.data.insert){
+                    node.addClass('sc_bar_insert');
+                }
+            },
+            onScheduleClick: function(node, time, timeline){
+                var start = time;
+                var end = $(this).timeSchedule('formatTime', $(this).timeSchedule('calcStringTime', time) + 3600);
+                $(this).timeSchedule('addSchedule', timeline, {
+                    start: start,
+                    end: end,
+                    text:'Insert Schedule',
+                    data:{
+                        insert: true
+                    }
+                });
+                addLog('onScheduleClick', time + ' ' + timeline);
+            },
+        });
+        $('#event_timelineData').on('click', function(){
+            addLog('timelineData', $sc.timeSchedule('timelineData'));
+        });
+        $('#event_scheduleData').on('click', function(){
+            addLog('scheduleData', $sc.timeSchedule('scheduleData'));
+        });
+        $('#event_resetData').on('click', function(){
+            addLog('resetData', $sc.timeSchedule('resetData'));
+        });
+        $('#clear-logs').on('click', function(){
+            $('#logs .table').empty();
+        });
+    });
+</script>
 </body>
 </html>

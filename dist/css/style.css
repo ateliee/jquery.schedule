@@ -15,15 +15,15 @@
     overflow: hidden; }
     .jq-schedule .sc_menu .sc_header .sc_time {
       text-align: center;
-      border-left: solid 1px #FFF;
-      background: #333; }
+      border-left: solid 1px #fff;
+      background: #555; }
 
 .jq-schedule .sc_menu .sc_header_cell,
 .jq-schedule .sc_data {
   float: left;
   font-weight: bold;
   color: #fff;
-  background: #333;
+  background: #555;
   position: relative; }
 
 .jq-schedule .sc_menu .sc_header_scroll,
@@ -35,7 +35,7 @@
 .jq-schedule .sc_menu .sc_header_cell,
 .jq-schedule .sc_header .sc_time,
 .jq-schedule .sc_main_scroll .sc_time {
-  color: #FFFFFF;
+  color: #fff;
   padding: 4px 0;
   line-height: 18px;
   height: 18px;
@@ -67,13 +67,10 @@
 
 .jq-schedule .sc_bar {
   position: absolute;
-  color: #FFF;
+  color: #fff;
   background: #4f93d6;
   cursor: pointer;
-  z-index: 10;
-  box-shadow: 2px 2px 4px #333;
-  -moz-box-shadow: 2px 2px 4px #333;
-  -webkit-box-shadow: 2px 2px 4px #333; }
+  z-index: 10; }
   .jq-schedule .sc_bar .head {
     display: block;
     padding: 6px 8px 0;
