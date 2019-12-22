@@ -100,13 +100,13 @@
          * switch draggable
          * @param {boolean} enable
          */
-        setDraggable: function(enable){
+        setDraggable: function (enable) {
             var e = enable ? true : false;
-            if(e !== setting.draggable){
+            if (e !== setting.draggable) {
                 setting.draggable = e;
-                if(e){
+                if (e) {
                     $element.find('.sc_bar').draggable('enable');
-                }else{
+                } else {
                     $element.find('.sc_bar').draggable('disable');
                 }
             }
@@ -115,13 +115,13 @@
          * switch resizable
          * @param {boolean} enable
          */
-        setResizable: function(enable){
+        setResizable: function (enable) {
             var e = enable ? true : false;
-            if(e !== setting.resizable){
+            if (e !== setting.resizable) {
                 setting.resizable = e;
-                if(e){
+                if (e) {
                     $element.find('.sc_bar').resizable('enable');
-                }else{
+                } else {
                     $element.find('.sc_bar').resizable('disable');
                 }
             }
@@ -336,11 +336,11 @@
                     }
                 }
             });
-            if(setting.draggable === false){
+            if (setting.draggable === false) {
                 $node.draggable('disable');
             }
-            if(setting.resizeable === false){
-                $node.resizeable('resizeable');
+            if (setting.resizable === false) {
+                $node.resizable('disable');
             }
             return key;
         },

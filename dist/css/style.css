@@ -109,3 +109,11 @@
   border-right: solid 1px #ccc; }
   .jq-schedule .sc_main_scroll .sc_main .tl:hover {
     background: #f0f0f0; }
+
+.jq-schedule .ui-state-disabled {
+  opacity: 1; }
+  .jq-schedule .ui-state-disabled .ui-resizable-handle:hover {
+    cursor: auto; }
+
+.jq-schedule .ui-draggable-disabled {
+  opacity: 0.8; }
