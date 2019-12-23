@@ -2,7 +2,8 @@
   "name": "jq.schedule",
   "version": "2.2.1",
   "description": "jQuery time schedule plugin",
-  "main": "js/index.js",
+  "main": "src/js/jq.schedule.js",
+  "types": "src/@types/jq.schedule.d.ts",
   "scripts": {
     "serve": "gulp serve",
     "test": "npm run lint && npm run sass-lint",

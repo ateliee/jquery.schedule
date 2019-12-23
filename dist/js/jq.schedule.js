@@ -12,24 +12,23 @@
     var methods = {
         /**
          *
-         * @param {string} string
+         * @param {string} str
          * @returns {number}
          */
-        calcStringTime: function (string) {
-            var slice = string.split(':');
+        calcStringTime: function (str) {
+            var slice = str.split(':');
             var h = Number(slice[0]) * 60 * 60;
             var i = Number(slice[1]) * 60;
-            var min = h + i;
-            return min;
+            return h + i;
         },
         /**
          *
-         * @param {number} min
+         * @param {number} val
          * @returns {string}
          */
-        formatTime: function (min) {
-            var h = '' + (min / 36000 | 0) + (min / 3600 % 10 | 0);
-            var i = '' + (min % 3600 / 600 | 0) + (min % 3600 / 60 % 10 | 0);
+        formatTime: function (val) {
+            var h = '' + (val / 36000 | 0) + (val / 3600 % 10 | 0);
+            var i = '' + (val % 3600 / 600 | 0) + (val % 3600 / 60 % 10 | 0);
             return h + ':' + i;
         },
 

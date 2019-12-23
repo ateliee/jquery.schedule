@@ -115,7 +115,6 @@ insert body
 |verticalScrollbar|20|scrollbar (px)|
 |timeLineBorder|2|border(top and bottom)|
 |bundleMoveWidth|6|width to move all schedules to the right of the clicked time line cell|
-|debug|#debug|debug string output elements|
 |rows|{object}|schedule data|
 |draggable|{boolean}|enable draggable(default true)|
 |resizable|{boolean}|enable resizable(default true)|
