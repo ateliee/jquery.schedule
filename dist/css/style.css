@@ -90,6 +90,15 @@
     font-weight: bold;
     height: 1.2em;
     overflow: hidden; }
+  .jq-schedule .sc_bar .ui-resizable-handle {
+    display: block;
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    width: 10px;
+    background: #2e7ac4; }
 
 .jq-schedule .timeline,
 .jq-schedule .sc_main .tb {
@@ -119,8 +128,10 @@
 
 .jq-schedule .ui-state-disabled {
   opacity: 1; }
-  .jq-schedule .ui-state-disabled .ui-resizable-handle:hover {
-    cursor: auto; }
+  .jq-schedule .ui-state-disabled .ui-resizable-handle {
+    display: none; }
+    .jq-schedule .ui-state-disabled .ui-resizable-handle:hover {
+      cursor: auto; }
 
 .jq-schedule .ui-draggable-disabled {
   opacity: 0.8; }
