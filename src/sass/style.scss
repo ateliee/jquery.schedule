@@ -140,6 +140,16 @@ $schedule-bar-padding: 8px;
       height: 1.2em;
       overflow: hidden;
     }
+    .ui-resizable-handle{
+      display: block;
+      content: ' ';
+      position: absolute;
+      height: 100%;
+      right: 0;
+      top: 0;
+      width: 10px;
+      background: darken($schedule-bar-bg-color, 10%);
+    }
   }
   .timeline,
   .sc_main .tb {
@@ -178,11 +188,14 @@ $schedule-bar-padding: 8px;
   }
   .ui-state-disabled{
     opacity: 1;
-    .ui-resizable-handle:hover{
-      cursor: auto;
+    .ui-resizable-handle{
+      display: none;
+      &:hover{
+        cursor: auto;
+      }
     }
   }
-  .ui-draggable-disabled{
+  .ui-draggable-disabled {
     opacity: 0.8;
   }
 }

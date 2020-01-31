@@ -55,10 +55,10 @@ gulp.task('tag', function() {
 gulp.task('browser-sync', function() {
     return browserSync({
         server: {
-            baseDir: "."
+            baseDir: "./"
         },
         browser: 'google chrome',
-        startPath: './demo'
+        startPath: 'demo'
     });
 });
 gulp.task('bs-reload', function (done) {
