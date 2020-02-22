@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '8.16.2'
+  - '12.13.1'
 script:
   - echo "Running tests against $(node -v) ..."
   - npm test
@@ -10,8 +10,11 @@ before_install:
 
 jobs:
   include:
+    - stage: lint
+      script:
+        - echo "lint start"
+        - npm run lint
     - stage: npm release
-      node_js: '8.16.2'
       script:
         - echo "Deploying to npm ..."
         - npm run build
