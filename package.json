@@ -1,6 +1,6 @@
 {
   "name": "jq.schedule",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "jQuery time schedule plugin",
   "main": "src/js/jq.schedule.js",
   "types": "src/@types/jq.schedule.d.ts",
@@ -37,8 +37,8 @@
     "jquery-ui-dist": "1.12.1"
   },
   "engines": {
-    "node": "8.16.2",
-    "npm": "6.4.1"
+    "node": "12.13.1",
+    "npm": "6.12.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
