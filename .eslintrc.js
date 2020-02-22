@@ -1,9 +1,10 @@
 module.exports = {
     "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
+        // check https://github.com/amilajack/eslint-plugin-compat
+        "plugin:compat/recommended"
     ],
     "plugins": [
-
     ],
     "parserOptions": {
         "ecmaVersion": 6,
@@ -12,6 +13,7 @@ module.exports = {
         "node": true
     },
     "globals": {
-
+        "$": "readonly",
+        "jQuery": "readonly"
     }
 };

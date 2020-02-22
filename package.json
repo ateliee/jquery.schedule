@@ -41,12 +41,16 @@
     "npm": "6.4.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "browser-sync": "2.26.7",
     "eslint": "6.7.2",
     "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-compat": "^3.5.1",
     "eslint-plugin-import": "2.19.1",
     "eslint-plugin-jquery": "1.5.1",
     "gulp": "4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-plumber": "1.2.1",
     "gulp-rename": "2.0.0",
     "gulp-sass": "4.0.2",

@@ -7,10 +7,11 @@ let shell = require('gulp-shell');
 let sass = require('gulp-sass');
 let browserSync = require('browser-sync');
 let tagVersion = require('gulp-tag-version');
+let babel = require('gulp-babel');
 
 // js minify
 gulp.task('js-minify', function () {
-    return gulp.src(['./src/**/*.js', '!./src/**/*.min.js'])
+    return gulp.src(['./dist/**/*.js', '!./dist/**/*.min.js'])
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(uglify())
@@ -21,9 +22,13 @@ gulp.task('js-minify', function () {
 
 // dist clean
 gulp.task('clean-dist', shell.task('rm -rf dist/*'));
-// copy
-gulp.task('copy-dist', function() {
-    return gulp.src('src/**/*.js').pipe(gulp.dest('dist'));
+// compile
+gulp.task('compile', function() {
+    return gulp.src('src/**/*.js')
+        .pipe(babel({
+            presets: ['@babel/preset-env']
+        }))
+        .pipe(gulp.dest('dist'));
 });
 // sass compile
 gulp.task('sass-minify', function () {
@@ -41,9 +46,11 @@ gulp.task('sass', function () {
 gulp.task('build', gulp.series(
     'clean-dist',
     gulp.parallel(
-        'copy-dist',
+        'compile',
+        'sass'
+    ),
+    gulp.parallel(
         'js-minify',
-        'sass',
         'sass-minify'
     )
 ));
@@ -73,6 +80,7 @@ gulp.task('watch', function (done) {
         'bs-reload'
     ));
     gulp.watch("./src/js/*.js", gulp.series(
+        'compile',
         'js-minify',
         'bs-reload'
     ));
