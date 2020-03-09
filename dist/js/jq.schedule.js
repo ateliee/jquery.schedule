@@ -468,12 +468,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
      * @param row
      */
     _addRow: function _addRow(timeline, row) {
-      var title = row.title;
       var id = $element.find('.sc_main .timeline').length;
       var html;
       html = '';
-      html += '<div class="timeline"><span>' + title + '</span></div>';
-      var $data = $(html); // event call
+      html += '<div class="timeline"></div>';
+      var $data = $(html);
+
+      if (row.title) {
+        $data.append('<span class="timeline-title">' + row.title + '</span>');
+      }
+
+      if (row.subtitle) {
+        $data.append('<span class="timeline-subtitle">' + row.subtitle + '</span>');
+      } // event call
+
 
       if (setting.onInitRow) {
         setting.onInitRow($data, row);
@@ -668,12 +676,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
      */
     _resizeRow: function _resizeRow(n, height) {
       var h = Math.max(height, 1);
-      $element.find('.sc_data .timeline').eq(n).height(h * setting.timeLineY - setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
-      $element.find('.sc_main .timeline').eq(n).height(h * setting.timeLineY - setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
+      $element.find('.sc_data .timeline').eq(n).outerHeight(h * setting.timeLineY - setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
+      $element.find('.sc_main .timeline').eq(n).outerHeight(h * setting.timeLineY - setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
       $element.find('.sc_main .timeline').eq(n).find('.sc_bgBar').each(function () {
-        $(this).height($(this).closest('.timeline').height());
+        $(this).outerHeight($(this).closest('.timeline').outerHeight());
       });
-      $element.find('.sc_data').height($element.find('.sc_main_box').height());
+      $element.find('.sc_data').outerHeight($element.find('.sc_main_box').outerHeight());
     },
 
     /**

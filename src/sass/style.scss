@@ -158,19 +158,25 @@ $schedule-bar-padding: 8px;
   .sc_data {
     .timeline {
       overflow: hidden;
+      padding: 10px;
       span {
-        padding: 10px;
         display: block;
-        &.photo{
-          float: left;
-          width: 36px;
-          height: 36px;
-          padding: 10px 0 10px 10px;
+        //&.timeline-photo{
+        //  float: left;
+        //  width: 36px;
+        //  height: 36px;
+        //  padding: 10px 0 10px 10px;
+        //}
+        //&.timeline-title{
+        //  float: left;
+        //  padding: 10px 0 10px 10px;
+        //  width: 92px;
+        //}
+        &.timeline-title{
         }
-        &.title{
-          float: left;
-          padding: 10px 0 10px 10px;
-          width: 92px;
+        &.timeline-subtitle{
+          font-size: 0.8em;
+          color: darken($schedule-bar-color, 20%);
         }
       }
     }

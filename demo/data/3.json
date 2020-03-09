@@ -1,6 +1,7 @@
 {
   "0" : {
     "title" : "Taro",
+    "subtitle" : "Developer",
     "schedule":[
       {
         "start": "08:00",
@@ -31,6 +32,7 @@
   },
   "1" : {
     "title" : "Saito",
+    "subtitle" : "Management",
     "schedule":[
       {
         "start": "08:00",
@@ -45,6 +47,7 @@
   },
   "2" : {
     "title" : "Daisuke Kato",
+    "subtitle" : "Management",
     "schedule":[
       {
         "start": "11:00",

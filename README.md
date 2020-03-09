@@ -48,6 +48,7 @@ insert body
             rows : {
                 '0' : {
                     title : 'Title Area',
+                    subtitle : 'Description',
                     schedule:[
                         {
                             start:'09:00',
@@ -124,6 +125,7 @@ insert body
 |Key|Type|Description|
 |---|----|-----|
 |title|string|Schedule Row Title|
+|subtitle|string|Schedule Row Description|
 |schedule|object[]|schedule row of array|
 
 ### Schedule Data in Object

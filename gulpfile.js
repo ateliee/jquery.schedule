@@ -60,12 +60,13 @@ gulp.task('tag', function() {
 
 // Static server
 gulp.task('browser-sync', function() {
-    return browserSync({
+    return browserSync.init({
         server: {
-            baseDir: "./"
+            baseDir: ".",
         },
-        browser: 'google chrome',
-        startPath: 'demo'
+        open: false,
+        // browser: 'google chrome',
+        startPath: 'demo/index.html'
     });
 });
 gulp.task('bs-reload', function (done) {

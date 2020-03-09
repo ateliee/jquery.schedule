@@ -105,19 +105,13 @@
   border-bottom: solid 2px #666; }
 
 .jq-schedule .sc_data .timeline {
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 10px; }
   .jq-schedule .sc_data .timeline span {
-    padding: 10px;
     display: block; }
-    .jq-schedule .sc_data .timeline span.photo {
-      float: left;
-      width: 36px;
-      height: 36px;
-      padding: 10px 0 10px 10px; }
-    .jq-schedule .sc_data .timeline span.title {
-      float: left;
-      padding: 10px 0 10px 10px;
-      width: 92px; }
+    .jq-schedule .sc_data .timeline span.timeline-subtitle {
+      font-size: 0.8em;
+      color: #cccccc; }
 
 .jq-schedule .sc_main_scroll .sc_main .tl {
   float: left;
