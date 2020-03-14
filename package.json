@@ -60,7 +60,8 @@
     "gulp-uglify": "3.0.2",
     "husky": "3.1.0",
     "readable-stream": "3.4.0",
-    "sass-lint": "1.13.1"
+    "sass-lint": "1.13.1",
+    "minimist": ">=1.2.2"
   },
   "husky": {
     "hooks": {
