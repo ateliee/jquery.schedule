@@ -436,6 +436,7 @@
                     handles: 'e',
                     grid: [setting.widthTimeX, setting.timeLineY - setting.timeBorder],
                     minWidth: setting.widthTimeX,
+                    containment: $this.find('.sc_main_scroll'),
                     start: function () {
                         let node = $(this);
                         node.data('resizeCheck', true);

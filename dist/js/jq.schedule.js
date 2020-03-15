@@ -503,6 +503,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           handles: 'e',
           grid: [setting.widthTimeX, setting.timeLineY - setting.timeBorder],
           minWidth: setting.widthTimeX,
+          containment: $this.find('.sc_main_scroll'),
           start: function start() {
             var node = $(this);
             node.data('resizeCheck', true);
