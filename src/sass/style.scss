@@ -11,7 +11,7 @@ $schedule-bar-color: #fff;
 $schedule-bar-bg-color: #4f93d6;
 $schedule-bar-shadow-enable: false;
 $schedule-bar-shadow-color: #333;
-$schedule-bar-padding: 8px;
+$schedule-bar-padding: 14px;
 
 @mixin clearfix() {
   //*zoom: 1;
@@ -116,7 +116,7 @@ $schedule-bar-padding: 8px;
     background: $schedule-bar-bg-color;
     cursor: pointer;
     z-index: 10;
-    overflow: hidden;
+    //overflow: hidden;
     @if $schedule-bar-shadow-enable {
       box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
       -moz-box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
@@ -126,8 +126,8 @@ $schedule-bar-padding: 8px;
     .head {
       display: block;
       margin-top: 6px;
-      padding: 0 $schedule-bar-padding 0;
       font-size: 12px;
+      padding: 0 $schedule-bar-padding;
       height: 1.2em;
       overflow: hidden;
     }
@@ -135,8 +135,8 @@ $schedule-bar-padding: 8px;
     .text {
       display: block;
       margin-top: 6px;
-      padding: 0 ($schedule-bar-padding * 2) 0;
       font-weight: bold;
+      padding: 0 $schedule-bar-padding;
       height: 1.2em;
       overflow: hidden;
     }
@@ -147,8 +147,14 @@ $schedule-bar-padding: 8px;
       height: 100%;
       right: 0;
       top: 0;
-      width: 10px;
+      width: 5px;
       background: darken($schedule-bar-bg-color, 10%);
+      &.ui-resizable-e{
+        right: 0;
+      }
+      &.ui-resizable-w{
+        left: 0;
+      }
     }
   }
   .timeline,

@@ -74,20 +74,19 @@
   color: #fff;
   background: #4f93d6;
   cursor: pointer;
-  z-index: 10;
-  overflow: hidden; }
+  z-index: 10; }
   .jq-schedule .sc_bar .head {
     display: block;
     margin-top: 6px;
-    padding: 0 8px 0;
     font-size: 12px;
+    padding: 0 14px;
     height: 1.2em;
     overflow: hidden; }
   .jq-schedule .sc_bar .text {
     display: block;
     margin-top: 6px;
-    padding: 0 16px 0;
     font-weight: bold;
+    padding: 0 14px;
     height: 1.2em;
     overflow: hidden; }
   .jq-schedule .sc_bar .ui-resizable-handle {
@@ -97,8 +96,12 @@
     height: 100%;
     right: 0;
     top: 0;
-    width: 10px;
+    width: 5px;
     background: #2e7ac4; }
+    .jq-schedule .sc_bar .ui-resizable-handle.ui-resizable-e {
+      right: 0; }
+    .jq-schedule .sc_bar .ui-resizable-handle.ui-resizable-w {
+      left: 0; }
 
 .jq-schedule .timeline,
 .jq-schedule .sc_main .tb {

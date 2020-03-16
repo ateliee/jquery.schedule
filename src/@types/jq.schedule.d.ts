@@ -34,6 +34,7 @@ interface Options {
     bundleMoveWidth?: number
     draggable?: boolean
     resizable?: boolean
+    resizableLeft?: boolean
     onInitRow?(node: jQuery, data: RowData): void
     onChange?(timeline: number, data: ScheduleData): void
     onClick?(node: jQuery, data: ScheduleData): void

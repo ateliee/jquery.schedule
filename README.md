@@ -119,6 +119,7 @@ insert body
 |rows|{object}|schedule data|
 |draggable|{boolean}|enable draggable(default true)|
 |resizable|{boolean}|enable resizable(default true)|
+|resizableLeft|{boolean}|enable left handle resizable(default false)|
 
 ### Schedule Data
 

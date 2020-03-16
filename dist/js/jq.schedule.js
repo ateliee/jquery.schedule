@@ -499,8 +499,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             }
           }
         });
+        var resizableHandles = ['e'];
+
+        if (setting.resizableLeft) {
+          resizableHandles.push('w');
+        }
+
         $node.resizable({
-          handles: 'e',
+          handles: resizableHandles.join(','),
           grid: [setting.widthTimeX, setting.timeLineY - setting.timeBorder],
           minWidth: setting.widthTimeX,
           containment: $this.find('.sc_main_scroll'),
@@ -928,6 +934,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           // width to move all schedules to the right of the clicked time cell
           draggable: true,
           resizable: true,
+          resizableLeft: false,
           // event
           onInitRow: null,
           onChange: null,
