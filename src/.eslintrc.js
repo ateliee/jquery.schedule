@@ -36,6 +36,7 @@ module.exports = {
         "no-param-reassign": "warn",
         "no-else-return": "warn",
         "no-underscore-dangle": "off",
-        "no-unneeded-ternary": "off"
+        "no-unneeded-ternary": "off",
+        "no-jquery/variable-pattern": "error"
     }
 };
