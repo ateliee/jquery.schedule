@@ -416,7 +416,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         var key = saveData.schedule.length - 1;
         $bar.data('sc_key', key);
-        $bar.bind('mouseup', function () {
+        $bar.on('mouseup', function () {
           // コールバックがセットされていたら呼出
           if (setting.onClick) {
             if ($(this).data('dragCheck') !== true && $(this).data('resizeCheck') !== true) {
@@ -628,7 +628,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         // left click
 
 
-        $timeline.find('.tl').click(function () {
+        $timeline.find('.tl').on('click', function () {
           if (setting.onScheduleClick) {
             setting.onScheduleClick.apply($this, [this, $(this).data('time'), $(this).data('timeline'), saveData.timeline[$(this).data('timeline')]]);
           }
@@ -959,7 +959,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var html = '' + '<div class="sc_menu">' + '\n' + '<div class="sc_header_cell"><span>&nbsp;</span></div>' + '\n' + '<div class="sc_header">' + '\n' + '<div class="sc_header_scroll"></div>' + '\n' + '</div>' + '\n' + '</div>' + '\n' + '<div class="sc_wrapper">' + '\n' + '<div class="sc_data">' + '\n' + '<div class="sc_data_scroll"></div>' + '\n' + '</div>' + '\n' + '<div class="sc_main_box">' + '\n' + '<div class="sc_main_scroll">' + '\n' + '<div class="sc_main"></div>' + '\n' + '</div>' + '\n' + '</div>' + '\n' + '</div>';
         $this.append(html);
         $this.addClass(config.className);
-        $this.find('.sc_main_box').scroll(function () {
+        $this.find('.sc_main_box').on('scroll', function () {
           $this.find('.sc_data_scroll').css('top', $(this).scrollTop() * -1);
           $this.find('.sc_header_scroll').css('left', $(this).scrollLeft() * -1);
         }); // add time cell
@@ -980,7 +980,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           }
         }
 
-        $(window).resize(function () {
+        $(window).on('resize', function () {
           methods._resizeWindow.apply($this);
         }).trigger('resize'); // addrow
 

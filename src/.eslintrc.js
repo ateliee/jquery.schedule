@@ -6,6 +6,7 @@ module.exports = {
     },
     'extends': [
         'airbnb-base/legacy',
+        'plugin:no-jquery/deprecated-3.5'
     ],
     "globals": {
         "Atomics": "readonly",
@@ -14,7 +15,7 @@ module.exports = {
         "$": true
     },
     "plugins": [
-        "jquery"
+        "no-jquery"
     ],
     "rules": {
         "indent": [2, 4],
