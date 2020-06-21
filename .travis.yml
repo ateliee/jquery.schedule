@@ -4,10 +4,6 @@ node_js:
 script:
   - echo "Running tests against $(node -v) ..."
   - npm test
-
-before_install:
-  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
-
 jobs:
   include:
     - stage: lint
@@ -18,6 +14,7 @@ jobs:
       script:
         - echo "Deploying to npm ..."
         - npm run build
+      before_deploy: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       deploy:
         provider: npm
         edge: true
