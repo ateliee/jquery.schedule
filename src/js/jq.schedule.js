@@ -347,14 +347,14 @@
                 var key = saveData.schedule.length - 1;
                 $bar.data('sc_key', key);
 
-                $bar.bind('mouseup', function () {
+                $bar.on('mouseup', function () {
                     // コールバックがセットされていたら呼出
                     if (setting.onClick) {
                         if ($(this).data('dragCheck') !== true && $(this).data('resizeCheck') !== true) {
-                            let node = $(this);
-                            let scKey = node.data('sc_key');
+                            let $n = $(this);
+                            let scKey = $n.data('sc_key');
                             setting.onClick.apply($this, [
-                                node,
+                                $n,
                                 saveData.schedule[scKey]
                             ]);
                         }
@@ -411,10 +411,10 @@
                         $(this).data('dragCheck', false);
                         currentNode = null;
 
-                        let node = $(this);
-                        let scKey = node.data('sc_key');
-                        let x = node.position().left;
-                        // var w = node.width();
+                        let $n = $(this);
+                        let scKey = $n.data('sc_key');
+                        let x = $n.position().left;
+                        // var w = $n.width();
                         let start = saveData.tableStartTime + (Math.floor(x / setting.widthTimeX) * setting.widthTime);
                         // var end = saveData.tableStartTime + (Math.floor((x + w) / setting.widthTimeX) * setting.widthTime);
                         let end = start + ((saveData.schedule[scKey].endTime - saveData.schedule[scKey].startTime));
@@ -426,7 +426,7 @@
                         // コールバックがセットされていたら呼出
                         if (setting.onChange) {
                             setting.onChange.apply($this, [
-                                node,
+                                $n,
                                 saveData.schedule[scKey]
                             ]);
                         }
@@ -442,8 +442,8 @@
                     minWidth: setting.widthTimeX,
                     containment: $this.find('.sc_main_scroll'),
                     start: function () {
-                        let node = $(this);
-                        node.data('resizeCheck', true);
+                        let $n = $(this);
+                        $n.data('resizeCheck', true);
                     },
                     resize: function (ev, ui) {
                         // box-sizing: border-box; に対応
@@ -452,10 +452,10 @@
                     },
                     // 要素の移動が終った後の処理
                     stop: function () {
-                        let node = $(this);
-                        let scKey = node.data('sc_key');
-                        let x = node.position().left;
-                        let w = node.outerWidth();
+                        let $n = $(this);
+                        let scKey = $n.data('sc_key');
+                        let x = $n.position().left;
+                        let w = $n.outerWidth();
                         let start = saveData.tableStartTime + (Math.floor(x / setting.widthTimeX) * setting.widthTime);
                         let end = saveData.tableStartTime + (Math.floor((x + w) / setting.widthTimeX) * setting.widthTime);
                         let timelineNum = saveData.schedule[scKey].timeline;
@@ -468,13 +468,13 @@
                         // 高さ調整
                         methods._resetBarPosition.apply($this, [timelineNum]);
                         // テキスト変更
-                        methods._rewriteBarText.apply($this, [node, saveData.schedule[scKey]]);
+                        methods._rewriteBarText.apply($this, [$n, saveData.schedule[scKey]]);
 
-                        node.data('resizeCheck', false);
+                        $n.data('resizeCheck', false);
                         // コールバックがセットされていたら呼出
                         if (setting.onChange) {
                             setting.onChange.apply($this, [
-                                node,
+                                $n,
                                 saveData.schedule[scKey]
                             ]);
                         }
@@ -552,7 +552,7 @@
                 }
                 // クリックイベント
                 // left click
-                $timeline.find('.tl').click(function () {
+                $timeline.find('.tl').on('click', function () {
                     if (setting.onScheduleClick) {
                         setting.onScheduleClick.apply($this, [
                             this,
@@ -625,10 +625,10 @@
                 // コールバックがセットされていたら呼出
                 if (setting.onAppendRow) {
                     $this.find('.sc_main .timeline').eq(id).find('.sc_bar').each(function () {
-                        let node = $(this);
-                        let scKey = node.data('sc_key');
+                        let $n = $(this);
+                        let scKey = $n.data('sc_key');
                         setting.onAppendRow.apply($this, [
-                            node,
+                            $n,
                             saveData.schedule[scKey]
                         ]);
                     });
@@ -867,7 +867,7 @@
                 $this.append(html);
                 $this.addClass(config.className);
 
-                $this.find('.sc_main_box').scroll(function () {
+                $this.find('.sc_main_box').on('scroll', function () {
                     $this.find('.sc_data_scroll').css('top', $(this).scrollTop() * -1);
                     $this.find('.sc_header_scroll').css('left', $(this).scrollLeft() * -1);
                 });
@@ -893,7 +893,7 @@
                     }
                 }
 
-                $(window).resize(function () {
+                $(window).on('resize', function () {
                     methods._resizeWindow.apply($this);
                 }).trigger('resize');
 

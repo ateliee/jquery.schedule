@@ -416,13 +416,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         var key = saveData.schedule.length - 1;
         $bar.data('sc_key', key);
-        $bar.bind('mouseup', function () {
+        $bar.on('mouseup', function () {
           // コールバックがセットされていたら呼出
           if (setting.onClick) {
             if ($(this).data('dragCheck') !== true && $(this).data('resizeCheck') !== true) {
-              var node = $(this);
-              var scKey = node.data('sc_key');
-              setting.onClick.apply($this, [node, saveData.schedule[scKey]]);
+              var $n = $(this);
+              var scKey = $n.data('sc_key');
+              setting.onClick.apply($this, [$n, saveData.schedule[scKey]]);
             }
           }
         });
@@ -482,9 +482,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           stop: function stop() {
             $(this).data('dragCheck', false);
             currentNode = null;
-            var node = $(this);
-            var scKey = node.data('sc_key');
-            var x = node.position().left; // var w = node.width();
+            var $n = $(this);
+            var scKey = $n.data('sc_key');
+            var x = $n.position().left; // var w = $n.width();
 
             var start = saveData.tableStartTime + Math.floor(x / setting.widthTimeX) * setting.widthTime; // var end = saveData.tableStartTime + (Math.floor((x + w) / setting.widthTimeX) * setting.widthTime);
 
@@ -495,7 +495,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             saveData.schedule[scKey].endTime = end; // コールバックがセットされていたら呼出
 
             if (setting.onChange) {
-              setting.onChange.apply($this, [node, saveData.schedule[scKey]]);
+              setting.onChange.apply($this, [$n, saveData.schedule[scKey]]);
             }
           }
         });
@@ -511,8 +511,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           minWidth: setting.widthTimeX,
           containment: $this.find('.sc_main_scroll'),
           start: function start() {
-            var node = $(this);
-            node.data('resizeCheck', true);
+            var $n = $(this);
+            $n.data('resizeCheck', true);
           },
           resize: function resize(ev, ui) {
             // box-sizing: border-box; に対応
@@ -521,10 +521,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           },
           // 要素の移動が終った後の処理
           stop: function stop() {
-            var node = $(this);
-            var scKey = node.data('sc_key');
-            var x = node.position().left;
-            var w = node.outerWidth();
+            var $n = $(this);
+            var scKey = $n.data('sc_key');
+            var x = $n.position().left;
+            var w = $n.outerWidth();
             var start = saveData.tableStartTime + Math.floor(x / setting.widthTimeX) * setting.widthTime;
             var end = saveData.tableStartTime + Math.floor((x + w) / setting.widthTimeX) * setting.widthTime;
             var timelineNum = saveData.schedule[scKey].timeline;
@@ -536,12 +536,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             methods._resetBarPosition.apply($this, [timelineNum]); // テキスト変更
 
 
-            methods._rewriteBarText.apply($this, [node, saveData.schedule[scKey]]);
+            methods._rewriteBarText.apply($this, [$n, saveData.schedule[scKey]]);
 
-            node.data('resizeCheck', false); // コールバックがセットされていたら呼出
+            $n.data('resizeCheck', false); // コールバックがセットされていたら呼出
 
             if (setting.onChange) {
-              setting.onChange.apply($this, [node, saveData.schedule[scKey]]);
+              setting.onChange.apply($this, [$n, saveData.schedule[scKey]]);
             }
           }
         });
@@ -628,7 +628,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         // left click
 
 
-        $timeline.find('.tl').click(function () {
+        $timeline.find('.tl').on('click', function () {
           if (setting.onScheduleClick) {
             setting.onScheduleClick.apply($this, [this, $(this).data('time'), $(this).data('timeline'), saveData.timeline[$(this).data('timeline')]]);
           }
@@ -698,9 +698,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         if (setting.onAppendRow) {
           $this.find('.sc_main .timeline').eq(id).find('.sc_bar').each(function () {
-            var node = $(this);
-            var scKey = node.data('sc_key');
-            setting.onAppendRow.apply($this, [node, saveData.schedule[scKey]]);
+            var $n = $(this);
+            var scKey = $n.data('sc_key');
+            setting.onAppendRow.apply($this, [$n, saveData.schedule[scKey]]);
           });
         }
       });
@@ -959,7 +959,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var html = '' + '<div class="sc_menu">' + '\n' + '<div class="sc_header_cell"><span>&nbsp;</span></div>' + '\n' + '<div class="sc_header">' + '\n' + '<div class="sc_header_scroll"></div>' + '\n' + '</div>' + '\n' + '</div>' + '\n' + '<div class="sc_wrapper">' + '\n' + '<div class="sc_data">' + '\n' + '<div class="sc_data_scroll"></div>' + '\n' + '</div>' + '\n' + '<div class="sc_main_box">' + '\n' + '<div class="sc_main_scroll">' + '\n' + '<div class="sc_main"></div>' + '\n' + '</div>' + '\n' + '</div>' + '\n' + '</div>';
         $this.append(html);
         $this.addClass(config.className);
-        $this.find('.sc_main_box').scroll(function () {
+        $this.find('.sc_main_box').on('scroll', function () {
           $this.find('.sc_data_scroll').css('top', $(this).scrollTop() * -1);
           $this.find('.sc_header_scroll').css('left', $(this).scrollLeft() * -1);
         }); // add time cell
@@ -980,7 +980,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           }
         }
 
-        $(window).resize(function () {
+        $(window).on('resize', function () {
           methods._resizeWindow.apply($this);
         }).trigger('resize'); // addrow
 
