@@ -1,6 +1,6 @@
 {
   "name": "jq.schedule",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "jQuery time schedule plugin",
   "main": "src/js/jq.schedule.js",
   "types": "src/@types/jq.schedule.d.ts",
@@ -43,7 +43,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
-    "browser-sync": "2.26.7",
+    "browser-sync": "^2.26.12",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-compat": "^3.5.1",
