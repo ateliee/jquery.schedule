@@ -1,5 +1,5 @@
 {
-  "name": "jq.schedule",
+  "name": "@ateliee/jq.schedule",
   "version": "3.1.6",
   "description": "jQuery time schedule plugin",
   "main": "src/js/jq.schedule.js",
@@ -16,6 +16,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ateliee/jquery.schedule.git"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   },
   "keywords": [
     "jquery",
