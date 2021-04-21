@@ -1,6 +1,6 @@
 {
-  "name": "jq.schedule",
-  "version": "3.1.7",
+  "name": "@ateliee/jq.schedule",
+  "version": "3.1.8",
   "description": "jQuery time schedule plugin",
   "main": "src/js/jq.schedule.js",
   "types": "src/@types/jq.schedule.d.ts",
