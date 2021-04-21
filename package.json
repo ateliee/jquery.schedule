@@ -18,7 +18,7 @@
     "url": "git+https://github.com/ateliee/jquery.schedule.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "jquery",
@@ -44,7 +44,7 @@
     "npm": "6.12.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.15",
+    "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.13.15",
     "browser-sync": "^2.26.14",
     "eslint": "^7.24.0",
