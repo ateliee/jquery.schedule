@@ -15,12 +15,11 @@ jobs:
       script:
         - echo "Deploying to github ..."
         - npm run build
-      env:
-        - NODE_AUTH_TOKEN=${GITHUB_TOKEN}
       before_deploy: echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" > .npmrc
       deploy:
         provider: npm
         edge: true
+        registry: https://npm.pkg.github.com
         email: info@ateliee.com
         access: public
         on:
@@ -30,8 +29,6 @@ jobs:
       script:
         - echo "Deploying to npm ..."
         - npm run build
-      env:
-        - NODE_AUTH_TOKEN=${NPM_TOKEN}
       before_deploy: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       deploy:
         provider: npm
