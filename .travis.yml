@@ -17,7 +17,7 @@ jobs:
         - npm run build
       env:
         - NODE_AUTH_TOKEN=${GITHUB_TOKEN}
-      before_deploy: echo "@ateliee:registry=https://npm.pkg.github.com/" > .npmrc
+      before_deploy: echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" > .npmrc
       deploy:
         provider: npm
         edge: true
