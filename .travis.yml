@@ -10,7 +10,7 @@ jobs:
       script:
         - echo "lint start"
         - npm run lint
-    - stage: npm release
+    - stage: npm package release
       script:
         - echo "Deploying to npm ..."
         - npm run build
@@ -23,7 +23,7 @@ jobs:
         on:
           branch: master
         api_key: $NPM_TOKEN
-    - stage: npm release github
+    - stage: github package release
       script:
         - echo "Deploying to github ..."
         - npm run build
