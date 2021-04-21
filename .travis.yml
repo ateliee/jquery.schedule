@@ -24,4 +24,17 @@ jobs:
           branch: master
           tags: true
         api_key: $NPM_TOKEN
-
+    - stage: npm release github
+      script:
+        - echo "Deploying to npm ..."
+        - npm run build
+      before_deploy: echo "//registry.npmjs.org/:_authToken=\${GITHUB_TOKEN}" > .npmrc
+      deploy:
+        provider: npm
+        edge: true
+        email: info@ateliee.com
+        access: public
+        on:
+          branch: master
+          tags: true
+        api_key: $GITHUB_TOKEN
