@@ -17,9 +17,6 @@
     "type": "git",
     "url": "git+https://github.com/ateliee/jquery.schedule.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/ateliee"
-  },
   "keywords": [
     "jquery",
     "front-end",
