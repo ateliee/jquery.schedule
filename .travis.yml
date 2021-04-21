@@ -25,9 +25,9 @@ jobs:
         api_key: $NPM_TOKEN
     - stage: npm release github
       script:
-        - echo "Deploying to npm ..."
+        - echo "Deploying to github ..."
         - npm run build
-      before_deploy: echo "//registry.npmjs.org/:_authToken=\${GITHUB_TOKEN}" > .npmrc
+      before_deploy: echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" > .npmrc
       deploy:
         provider: npm
         edge: true
