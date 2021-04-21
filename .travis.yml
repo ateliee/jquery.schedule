@@ -22,7 +22,6 @@ jobs:
         access: public
         on:
           branch: master
-          tags: true
         api_key: $NPM_TOKEN
     - stage: npm release github
       script:
@@ -36,5 +35,4 @@ jobs:
         access: public
         on:
           branch: master
-          tags: true
         api_key: $GITHUB_TOKEN
