@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - '12.13.1'
+  - '14.5.0'
 script:
   - echo "Running tests against $(node -v) ..."
   - npm test
@@ -14,7 +15,9 @@ jobs:
       script:
         - echo "Deploying to github ..."
         - npm run build
-      before_deploy: echo "@ateliee:registry=https://npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" > .npmrc
+      env:
+        NODE_AUTH_TOKEN: $GITHUB_TOKEN
+      before_deploy: echo "@ateliee:registry=https://npm.pkg.github.com/" > .npmrc
       deploy:
         provider: npm
         edge: true
@@ -27,6 +30,8 @@ jobs:
       script:
         - echo "Deploying to npm ..."
         - npm run build
+      env:
+        NODE_AUTH_TOKEN: $NPM_TOKEN
       before_deploy: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
       deploy:
         provider: npm
