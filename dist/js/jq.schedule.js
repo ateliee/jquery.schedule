@@ -665,7 +665,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               data.text = bdata.text;
             }
 
-            data.timeline = i;
+            data.timeline = timeline;
             data.data = {};
 
             if (bdata.data) {
