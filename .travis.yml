@@ -1,7 +1,8 @@
 language: node_js
 node_js:
-  - '12.13.1'
-  - '14.5.0'
+  - node
+  - 15
+  - 16
 script:
   - echo "Running tests against $(node -v) ..."
   - npm test
