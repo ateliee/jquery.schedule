@@ -597,7 +597,7 @@
                         if (bdata.text) {
                             data.text = bdata.text;
                         }
-                        data.timeline = i;
+                        data.timeline = timeline;
                         data.data = {};
                         if (bdata.data) {
                             data.data = bdata.data;
