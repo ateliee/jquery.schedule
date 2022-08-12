@@ -6,10 +6,11 @@
   "types": "src/@types/jq.schedule.d.ts",
   "scripts": {
     "serve": "gulp serve",
-    "test": "npm run lint && npm run sass-lint",
+    "test": "npm run lint && npm run stylelint",
     "lint": "npx eslint .",
     "lint:fix": "npx eslint . --fix",
-    "sass-lint": "sass-lint -v -q",
+    "stylelint": "npx stylelint \"src/**/*.scss\"",
+    "stylelint:fix": "npm run stylelint -- --fix",
     "build": "gulp build",
     "git:tag": "gulp tag"
   },
@@ -37,8 +38,8 @@
     "jquery-ui-dist": "1.12.1"
   },
   "engines": {
-    "node": "16.14.0",
-    "npm": "8.5.4"
+    "node": "16.16.0",
+    "npm": "8.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.7",
@@ -62,7 +63,8 @@
     "minimist": ">=1.2.5",
     "readable-stream": "^3.6.0",
     "sass": "^1.49.9",
-    "sass-lint": "^1.13.1"
+    "stylelint": "^14.10.0",
+    "stylelint-config-standard-scss": "^5.0.0"
   },
   "husky": {
     "hooks": {

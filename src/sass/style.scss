@@ -14,8 +14,8 @@ $schedule-bar-shadow-color: #333;
 $schedule-bar-padding: 14px;
 
 @mixin clearfix() {
-  //*zoom: 1;
-  &:after {
+  // *zoom: 1;
+  &::after {
     content: "";
     display: table;
     clear: both;
@@ -27,9 +27,10 @@ $schedule-bar-padding: 14px;
   * {
     box-sizing: border-box;
   }
+
   .sc_wrapper,
-  .sc_menu{
-    @include clearfix();
+  .sc_menu {
+    @include clearfix;
   }
 
   .sc_menu {
@@ -116,11 +117,9 @@ $schedule-bar-padding: 14px;
     background: $schedule-bar-bg-color;
     cursor: pointer;
     z-index: 10;
-    //overflow: hidden;
+
     @if $schedule-bar-shadow-enable {
       box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
-      -moz-box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
-      -webkit-box-shadow: 2px 2px 4px $schedule-bar-shadow-color;
     }
 
     .head {
@@ -140,54 +139,49 @@ $schedule-bar-padding: 14px;
       height: 1.2em;
       overflow: hidden;
     }
-    .ui-resizable-handle{
+
+    .ui-resizable-handle {
       display: block;
-      content: ' ';
+      content: " ";
       position: absolute;
       height: 100%;
       right: 0;
       top: 0;
       width: 5px;
       background: darken($schedule-bar-bg-color, 10%);
-      &.ui-resizable-e{
+
+      &.ui-resizable-e {
         right: 0;
       }
-      &.ui-resizable-w{
+
+      &.ui-resizable-w {
         left: 0;
       }
     }
   }
+
   .timeline,
   .sc_main .tb {
     border-bottom: solid 2px #666;
   }
+
   .sc_data {
     .timeline {
       overflow: hidden;
       padding: 10px;
+
       span {
         display: block;
-        //&.timeline-photo{
-        //  float: left;
-        //  width: 36px;
-        //  height: 36px;
-        //  padding: 10px 0 10px 10px;
-        //}
-        //&.timeline-title{
-        //  float: left;
-        //  padding: 10px 0 10px 10px;
-        //  width: 92px;
-        //}
-        &.timeline-title{
-        }
-        &.timeline-subtitle{
+
+        &.timeline-subtitle {
           font-size: 0.8em;
           color: darken($schedule-bar-color, 20%);
         }
       }
     }
   }
-  .sc_main_scroll .sc_main{
+
+  .sc_main_scroll .sc_main {
     .tl {
       float: left;
       height: 100%;
@@ -198,15 +192,19 @@ $schedule-bar-padding: 14px;
       }
     }
   }
-  .ui-state-disabled{
+
+  .ui-state-disabled {
     opacity: 1;
-    .ui-resizable-handle{
+
+    .ui-resizable-handle {
       display: none;
-      &:hover{
+
+      &:hover {
         cursor: auto;
       }
     }
   }
+
   .ui-draggable-disabled {
     opacity: 0.8;
   }

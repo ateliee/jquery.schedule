@@ -1,8 +1,8 @@
 .jq-schedule * {
   box-sizing: border-box;
 }
-.jq-schedule .sc_wrapper:after,
-.jq-schedule .sc_menu:after {
+.jq-schedule .sc_wrapper::after,
+.jq-schedule .sc_menu::after {
   content: "";
   display: table;
   clear: both;

@@ -1,2 +1,0 @@
-files:
-  include: 'src/sass/**/*.s+(a|c)ss'
