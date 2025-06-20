@@ -59,8 +59,7 @@
 }
 .jq-schedule .sc_main_box {
   float: left;
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow: auto;
 }
 .jq-schedule .sc_main {
   position: relative;
