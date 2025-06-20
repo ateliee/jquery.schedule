@@ -81,6 +81,9 @@
         <p>
             Drag and Drop Support/Resize Schedule/Ajax Support(Callback Event Option)
         </p>
+        <div style="padding-bottom: 16px">
+            <span class="label label-info" id="version-badge">Loading version...</span>
+        </div>
         <div style="padding-bottom: 16px"><button onclick="javascript:location.href='https://github.com/ateliee/jquery.schedule';" class="btn btn-lg btn-primary" type="button">Download jq.Schedule</button></div>
         <div>
             <iframe src="https://ghbtns.com/github-btn.html?user=ateliee&repo=jquery.schedule&type=star&count=true&size=large" frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
@@ -446,6 +449,12 @@ $(function(){
         });
         $('#clear-logs').on('click', function(){
             $('#logs .table').empty();
+        });
+
+        $.getJSON('../package.json', function(data) {
+            $('#version-badge').text('v' + data.version);
+        }).fail(function() {
+            $('#version-badge').text('v4.0.2');
         });
     });
 </script>
