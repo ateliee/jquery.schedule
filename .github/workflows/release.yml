@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  github-package-release:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@ateliee'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build
+      run: |
+        echo "Deploying to github ..."
+        npm run build
+    
+    - name: Publish to GitHub Package Registry
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  npm-package-release:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+        registry-url: 'https://registry.npmjs.org'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build
+      run: |
+        echo "Deploying to npm ..."
+        npm run build
+    
+    - name: Publish to NPM Registry
+      run: npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
