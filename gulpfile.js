@@ -3,7 +3,7 @@ let uglify = require('gulp-uglify');
 let sourcemaps = require('gulp-sourcemaps');
 let rename = require('gulp-rename');
 let plumber = require('gulp-plumber');
-let shell = require('gulp-shell');
+const { deleteAsync } = require('del');
 let sass = require('gulp-sass')(require('sass'));
 let browserSync = require('browser-sync');
 let tagVersion = require('gulp-tag-version');
@@ -21,7 +21,9 @@ gulp.task('js-minify', function () {
 });
 
 // dist clean
-gulp.task('clean-dist', shell.task('rm -rf dist/*'));
+gulp.task('clean-dist', function() {
+    return deleteAsync(['dist/**/*']);
+});
 // compile
 gulp.task('compile', function() {
     return gulp.src('src/**/*.js')
