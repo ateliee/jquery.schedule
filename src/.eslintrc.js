@@ -5,8 +5,7 @@ module.exports = {
         'jquery': true
     },
     'extends': [
-        'airbnb-base/legacy',
-        'plugin:no-jquery/deprecated-3.5'
+        'eslint:recommended'
     ],
     "globals": {
         "Atomics": "readonly",
