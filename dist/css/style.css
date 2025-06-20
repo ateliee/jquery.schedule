@@ -59,8 +59,7 @@
 }
 .jq-schedule .sc_main_box {
   float: left;
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow: auto;
 }
 .jq-schedule .sc_main {
   position: relative;
@@ -103,7 +102,7 @@
   right: 0;
   top: 0;
   width: 5px;
-  background: #2e7ac4;
+  background: rgb(45.7235023041, 121.5576036866, 196.2764976959);
 }
 .jq-schedule .sc_bar .ui-resizable-handle.ui-resizable-e {
   right: 0;

@@ -33,7 +33,7 @@ gulp.task('compile', function() {
 // sass compile
 gulp.task('sass-minify', function () {
     return gulp.src('./src/sass/**/*.scss')
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({style: 'compressed'}).on('error', sass.logError))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('./dist/css'));
 });
