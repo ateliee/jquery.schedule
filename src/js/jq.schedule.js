@@ -97,7 +97,7 @@
                 data[i] = saveData.timeline[i];
                 data[i].schedule = [];
             }
-            for (i in saveData.schedule) {
+            for (i = 0; i < saveData.schedule.length; i++) {
                 var d = saveData.schedule[i];
                 if (typeof d.timeline === 'undefined') {
                     continue;
@@ -330,25 +330,21 @@
                 if (data.class) {
                     $bar.addClass(data.class);
                 }
-                // $this.find('.sc_main').append($bar);
                 var $row = $this.find('.sc_main .timeline').eq(timeline);
+                var $scMain = $this.find('.sc_main');
                 $row.append($bar);
-                // データの追加
                 saveData.schedule.push(data);
                 methods._saveData.apply($this, [saveData]);
-                // コールバックがセットされていたら呼出
                 if (setting.onAppendSchedule) {
                     setting.onAppendSchedule.apply($this, [
                         $bar,
                         data
                     ]);
                 }
-                // key
                 var key = saveData.schedule.length - 1;
                 $bar.data('sc_key', key);
 
                 $bar.on('mouseup', function () {
-                    // コールバックがセットされていたら呼出
                     if (setting.onClick) {
                         if ($(this).data('dragCheck') !== true && $(this).data('resizeCheck') !== true) {
                             let $n = $(this);
@@ -363,10 +359,9 @@
 
                 var $node = $this.find('.sc_bar');
                 let currentNode = null;
-                // move node.
                 $node.draggable({
                     grid: [setting.widthTimeX, 1],
-                    containment: $this.find('.sc_main'),
+                    containment: $scMain,
                     helper: 'original',
                     start: function (event, ui) {
                         let node = {};
@@ -499,7 +494,7 @@
             let $this = $(this);
             let saveData = methods._loadData.apply($this);
             let num = 0;
-            for (let i in saveData.schedule) {
+            for (let i = 0; i < saveData.schedule.length; i++) {
                 if (saveData.schedule[i].timeline === n) {
                     num++;
                 }
@@ -663,8 +658,8 @@
             return this.each(function () {
                 let $this = $(this);
                 let setting = methods._loadSettingData.apply($this);
-                // 要素の並び替え
-                let $barList = $this.find('.sc_main .timeline').eq(n).find('.sc_bar');
+                let $timeline = $this.find('.sc_main .timeline').eq(n);
+                let $barList = $timeline.find('.sc_bar');
                 let codes = [], check = [];
                 let h = 0;
                 let $e1, $e2;
@@ -676,7 +671,6 @@
                         x: $($barList[i]).position().left
                     };
                 }
-                // ソート
                 codes.sort(function (a, b) {
                     if (a.x < b.x) {
                         return -1;
@@ -716,7 +710,6 @@
                     });
                     check[h][check[h].length] = c1;
                 }
-                // 高さの調整
                 methods._resizeRow.apply($this, [n, check.length]);
             });
         },
@@ -730,10 +723,14 @@
                 let $this = $(this);
                 let setting = methods._loadSettingData.apply($this);
                 let h = Math.max(height, 1);
-                $this.find('.sc_data .timeline').eq(n).outerHeight((h * setting.timeLineY) + setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
-                $this.find('.sc_main .timeline').eq(n).outerHeight((h * setting.timeLineY) + setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
+                let newHeight = (h * setting.timeLineY) + setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom;
+                let $dataTimeline = $this.find('.sc_data .timeline').eq(n);
+                let $mainTimeline = $this.find('.sc_main .timeline').eq(n);
 
-                $this.find('.sc_main .timeline').eq(n).find('.sc_bgBar').each(function () {
+                $dataTimeline.outerHeight(newHeight);
+                $mainTimeline.outerHeight(newHeight);
+
+                $mainTimeline.find('.sc_bgBar').each(function () {
                     $(this).outerHeight($(this).closest('.timeline').outerHeight());
                 });
 
@@ -771,7 +768,8 @@
                 let $this = $(this);
                 let setting = methods._loadSettingData.apply($this);
                 let saveData = methods._loadData.apply($this);
-                let $barList = $this.find('.sc_main .timeline').eq(timeline).find('.sc_bar');
+                let $timeline = $this.find('.sc_main .timeline').eq(timeline);
+                let $barList = $timeline.find('.sc_bar');
                 for (let i = 0; i < $barList.length; i++) {
                     let $bar = $($barList[i]);
                     if (baseTimeLineCell.position().left <= $bar.position().left) {
@@ -790,7 +788,6 @@
                         saveData.schedule[scKey].endTime = end;
                         methods._rewriteBarText.apply($this, [$bar, saveData.schedule[scKey]]);
 
-                        // if setting
                         if (setting.onChange) {
                             setting.onChange.apply($this, [
                                 $bar,

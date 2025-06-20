@@ -109,7 +109,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         data[i].schedule = [];
       }
 
-      for (i in saveData.schedule) {
+      for (i = 0; i < saveData.schedule.length; i++) {
         var d = saveData.schedule[i];
 
         if (typeof d.timeline === 'undefined') {
@@ -398,26 +398,22 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
         if (data.class) {
           $bar.addClass(data.class);
-        } // $this.find('.sc_main').append($bar);
-
+        }
 
         var $row = $this.find('.sc_main .timeline').eq(timeline);
-        $row.append($bar); // データの追加
-
+        var $scMain = $this.find('.sc_main');
+        $row.append($bar);
         saveData.schedule.push(data);
 
-        methods._saveData.apply($this, [saveData]); // コールバックがセットされていたら呼出
-
+        methods._saveData.apply($this, [saveData]);
 
         if (setting.onAppendSchedule) {
           setting.onAppendSchedule.apply($this, [$bar, data]);
-        } // key
-
+        }
 
         var key = saveData.schedule.length - 1;
         $bar.data('sc_key', key);
         $bar.on('mouseup', function () {
-          // コールバックがセットされていたら呼出
           if (setting.onClick) {
             if ($(this).data('dragCheck') !== true && $(this).data('resizeCheck') !== true) {
               var $n = $(this);
@@ -427,11 +423,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
           }
         });
         var $node = $this.find('.sc_bar');
-        var currentNode = null; // move node.
-
+        var currentNode = null;
         $node.draggable({
           grid: [setting.widthTimeX, 1],
-          containment: $this.find('.sc_main'),
+          containment: $scMain,
           helper: 'original',
           start: function start(event, ui) {
             var node = {};
@@ -571,7 +566,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
       var num = 0;
 
-      for (var i in saveData.schedule) {
+      for (var i = 0; i < saveData.schedule.length; i++) {
         if (saveData.schedule[i].timeline === n) {
           num++;
         }
@@ -738,10 +733,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
       return this.each(function () {
         var $this = $(this);
 
-        var setting = methods._loadSettingData.apply($this); // 要素の並び替え
+        var setting = methods._loadSettingData.apply($this);
 
-
-        var $barList = $this.find('.sc_main .timeline').eq(n).find('.sc_bar');
+        var $timeline = $this.find('.sc_main .timeline').eq(n);
+        var $barList = $timeline.find('.sc_bar');
         var codes = [],
             check = [];
         var h = 0;
@@ -754,8 +749,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             code: i,
             x: $($barList[i]).position().left
           };
-        } // ソート
-
+        }
 
         codes.sort(function (a, b) {
           if (a.x < b.x) {
@@ -803,8 +797,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             top: h * setting.timeLineY + setting.timeLinePaddingTop
           });
           check[h][check[h].length] = c1;
-        } // 高さの調整
-
+        }
 
         methods._resizeRow.apply($this, [n, check.length]);
       });
@@ -822,9 +815,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
         var setting = methods._loadSettingData.apply($this);
 
         var h = Math.max(height, 1);
-        $this.find('.sc_data .timeline').eq(n).outerHeight(h * setting.timeLineY + setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
-        $this.find('.sc_main .timeline').eq(n).outerHeight(h * setting.timeLineY + setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom);
-        $this.find('.sc_main .timeline').eq(n).find('.sc_bgBar').each(function () {
+        var newHeight = h * setting.timeLineY + setting.timeLineBorder + setting.timeLinePaddingTop + setting.timeLinePaddingBottom;
+        var $dataTimeline = $this.find('.sc_data .timeline').eq(n);
+        var $mainTimeline = $this.find('.sc_main .timeline').eq(n);
+        $dataTimeline.outerHeight(newHeight);
+        $mainTimeline.outerHeight(newHeight);
+        $mainTimeline.find('.sc_bgBar').each(function () {
           $(this).outerHeight($(this).closest('.timeline').outerHeight());
         });
         $this.find('.sc_data').outerHeight($this.find('.sc_main_box').outerHeight());
@@ -869,7 +865,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 
         var saveData = methods._loadData.apply($this);
 
-        var $barList = $this.find('.sc_main .timeline').eq(timeline).find('.sc_bar');
+        var $timeline = $this.find('.sc_main .timeline').eq(timeline);
+        var $barList = $timeline.find('.sc_bar');
 
         for (var i = 0; i < $barList.length; i++) {
           var $bar = $($barList[i]);
@@ -888,8 +885,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
             saveData.schedule[scKey].startTime = start;
             saveData.schedule[scKey].endTime = end;
 
-            methods._rewriteBarText.apply($this, [$bar, saveData.schedule[scKey]]); // if setting
-
+            methods._rewriteBarText.apply($this, [$bar, saveData.schedule[scKey]]);
 
             if (setting.onChange) {
               setting.onChange.apply($this, [$bar, saveData.schedule[scKey]]);
