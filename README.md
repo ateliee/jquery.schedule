@@ -2,7 +2,7 @@ jq.Schedule
 ===============
 
 [![npm version](https://badge.fury.io/js/jq.schedule.svg)](https://badge.fury.io/js/jq.schedule)
-[![Build Status](https://travis-ci.com/ateliee/jquery.schedule.svg?branch=master)](https://travis-ci.com/ateliee/jquery.schedule)
+[![Build Status](https://travis-ci.org/ateliee/jquery.schedule.svg?branch=master)](https://travis-ci.org/ateliee/jquery.schedule)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 ![](docs/img/preview.png)
