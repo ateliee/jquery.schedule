@@ -1,6 +1,6 @@
 {
   "name": "@ateliee/jq.schedule",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "description": "jQuery time schedule plugin",
   "main": "src/js/jq.schedule.js",
   "types": "src/@types/jq.schedule.d.ts",
@@ -38,8 +38,8 @@
     "jquery-ui-dist": "^1.13.3"
   },
   "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=10.0.0"
+    "node": ">=24.0.0",
+    "npm": ">=11.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",

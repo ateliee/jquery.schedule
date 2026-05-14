@@ -775,8 +775,8 @@
                 for (let i = 0; i < $barList.length; i++) {
                     let $bar = $($barList[i]);
                     if (baseTimeLineCell.position().left <= $bar.position().left) {
-                        let v1 = $bar.position().left + setting.widthTimeX * moveWidth;
-                        let v2 = Math.floor((saveData.tableEndTime - saveData.tableStartTime) / setting.widthTime) * setting.widthTimeX - $bar.outerWidth();
+                        let v1 = $bar.position().left + (setting.widthTimeX * moveWidth);
+                        let v2 = (Math.floor((saveData.tableEndTime - saveData.tableStartTime) / setting.widthTime) * setting.widthTimeX) - $bar.outerWidth();
                         $bar.css({
                             left: Math.max(0, Math.min(v1, v2))
                         });

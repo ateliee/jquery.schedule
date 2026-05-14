@@ -221,3 +221,5 @@ run server browser-sync
 npm run serve
 ```
 
+dev URL: http://localhost:3000/demo/
+
