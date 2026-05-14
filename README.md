@@ -1,7 +1,7 @@
 jq.Schedule
 ===============
 
-[![npm version](https://badge.fury.io/js/jq.schedule.svg)](https://badge.fury.io/js/jq.schedule)
+[![npm version](https://badge.fury.io/js/@ateliee%2Fjq.schedule.svg)](https://badge.fury.io/js/@ateliee%2Fjq.schedule)
 [![CI](https://github.com/ateliee/jquery.schedule/workflows/CI/badge.svg)](https://github.com/ateliee/jquery.schedule/actions)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
