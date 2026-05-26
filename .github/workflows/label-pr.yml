@@ -1,0 +1,61 @@
+name: Label pull request
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label from branch name
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #9.0.0
+        with:
+          script: |
+            const branch = context.payload.pull_request.head.ref;
+            const labelByPrefix = [
+              ['feature/', 'feature'],
+              ['fix/', 'bug'],
+              ['hotfix/', 'hotfix'],
+            ];
+
+            const match = labelByPrefix.find(([prefix]) => branch.startsWith(prefix));
+            if (!match) {
+              core.info(`No label for branch: ${branch}`);
+              return;
+            }
+
+            const label = match[1];
+            const colors = {
+              feature: '0E8A16',
+              bug: 'd73a4a',
+              hotfix: 'b60205',
+            };
+
+            const { owner, repo } = context.repo;
+            try {
+              await github.rest.issues.getLabel({ owner, repo, name: label });
+            } catch (error) {
+              if (error.status !== 404) {
+                throw error;
+              }
+              await github.rest.issues.createLabel({
+                owner,
+                repo,
+                name: label,
+                color: colors[label],
+              });
+            }
+
+            await github.rest.issues.addLabels({
+              owner,
+              repo,
+              issue_number: context.payload.pull_request.number,
+              labels: [label],
+            });
+
+            core.info(`Added label "${label}" to PR #${context.payload.pull_request.number}`);
