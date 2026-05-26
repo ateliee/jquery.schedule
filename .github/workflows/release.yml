@@ -2,12 +2,12 @@ name: Release
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   create-tag:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     outputs:
       version: ${{ steps.get-version.outputs.version }}
       tag-created: ${{ steps.create-tag.outputs.tag-created }}
@@ -49,7 +49,7 @@ jobs:
   github-package-release:
     runs-on: ubuntu-latest
     needs: create-tag
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #6.0.2
@@ -78,7 +78,7 @@ jobs:
   npm-package-release:
     runs-on: ubuntu-latest
     needs: create-tag
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     permissions:
       contents: read
       id-token: write # for OIDC
