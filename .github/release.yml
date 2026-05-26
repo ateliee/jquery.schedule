@@ -1,12 +1,23 @@
-
 changelog:
   categories:
-    - title: 🏕 Features
+    - title: 🚀 Features
+      labels:
+        - feature
+    - title: 🐛 Bug Fixes
+      labels:
+        - bug
+    - title: 🔥 Hotfixes
+      labels:
+        - hotfix
+    - title: 👒 Dependencies
+      labels:
+        - dependencies
+    - title: 📝 Other Changes
       labels:
         - '*'
       exclude:
         labels:
+          - feature
+          - bug
+          - hotfix
           - dependencies
-    - title: 👒 Dependencies
-      labels:
-        - dependencies
