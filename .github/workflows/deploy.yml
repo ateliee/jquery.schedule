@@ -93,7 +93,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: create-tag
     if: needs.create-tag.outputs.version-changed == 'true' && needs.create-tag.outputs.tag-created == 'true'
-    
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #6.0.2
     
