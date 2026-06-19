@@ -207,6 +207,7 @@ $("#schedule").timeSchedule('addSchedule', timeline, {
 ```
 
 #### switch setting
+
 ```
 $("#schedule").timeSchedule('setDraggable', true or false);
 ```
