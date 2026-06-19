@@ -1,0 +1,51 @@
+name: Bump Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      new_version:
+        description: 'New version (e.g., 1.2.3)'
+        required: true
+        default: '1.0.0'
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Update package version
+        id: update_version
+        run: |
+          NEW_VERSION=${{ inputs.new_version }}
+          # Use npm version without creating a git tag
+          npm version $NEW_VERSION --no-git-tag-version
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit changes
+        run: |
+          git add package.json
+          git commit -m "chore: bump version to ${{ inputs.new_version }}"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin HEAD:${{ github.ref }}
