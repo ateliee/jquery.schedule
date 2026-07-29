@@ -68,5 +68,9 @@
     "hooks": {
       "pre-commit": "npm test && npm run build"
     }
+  },
+  "overrides": {
+    "immutable": "^4.3.9",
+    "brace-expansion": "^5.0.8"
   }
 }
