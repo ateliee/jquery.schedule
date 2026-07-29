@@ -5,9 +5,9 @@ let rename = require('gulp-rename');
 let plumber = require('gulp-plumber');
 const { deleteAsync } = require('del');
 let sass = require('gulp-sass')(require('sass'));
-let browserSync = require('browser-sync');
 let tagVersion = require('gulp-tag-version');
 let babel = require('gulp-babel');
+let { spawn } = require('child_process');
 
 // js minify
 gulp.task('js-minify', function () {
@@ -21,21 +21,21 @@ gulp.task('js-minify', function () {
 });
 
 // dist clean
-gulp.task('clean-dist', function() {
+gulp.task('clean-dist', function () {
     return deleteAsync(['dist/**/*']);
 });
 // compile
-gulp.task('compile', function() {
-    return gulp.src('src/**/*.js')
+gulp.task('compile', function () {
+    return gulp.src('src/js/**/*.js')
         .pipe(babel({
             presets: ['@babel/preset-env']
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/js'));
 });
 // sass compile
 gulp.task('sass-minify', function () {
     return gulp.src('./src/sass/**/*.scss')
-        .pipe(sass({style: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({ style: 'compressed' }).on('error', sass.logError))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('./dist/css'));
 });
@@ -56,41 +56,27 @@ gulp.task('build', gulp.series(
         'sass-minify'
     )
 ));
-gulp.task('tag', function() {
+gulp.task('tag', function () {
     return gulp.src(['./package.json']).pipe(tagVersion());
 });
 
-// Static server
-gulp.task('browser-sync', function() {
-    return browserSync.init({
-        server: {
-            baseDir: ".",
-        },
-        open: false,
-        // browser: 'google chrome',
-        startPath: 'demo/index.html'
-    });
-});
-gulp.task('bs-reload', function (done) {
-    browserSync.reload();
-    done();
+// Vite dev server
+gulp.task('vite', function (done) {
+    let child = spawn('npx', ['vite'], { stdio: 'inherit', shell: true });
+    child.on('close', done);
 });
 
-// Watch scss AND html files, doing different things with each.
+// Watch scss AND js files
 gulp.task('watch', function (done) {
-    gulp.watch("./src/sass/*.scss", gulp.series(
-        'sass-minify',
-        'bs-reload'
+    gulp.watch("./src/sass/**/*.scss", gulp.series(
+        'sass',
+        'sass-minify'
     ));
-    gulp.watch("./src/js/*.js", gulp.series(
+    gulp.watch("./src/js/**/*.js", gulp.series(
         'compile',
-        'js-minify',
-        'bs-reload'
-    ));
-    gulp.watch("./demo/*", gulp.series(
-        'bs-reload'
+        'js-minify'
     ));
     done();
 });
-gulp.task('serve', gulp.series('build', 'watch', 'browser-sync'));
+gulp.task('serve', gulp.series('build', gulp.parallel('watch', 'vite')));
 gulp.task('default', gulp.task('serve'));
