@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // variable
 $schedule-bg-color: #f0f0f0;
 $schedule-border-color: #ccc;
@@ -147,7 +149,7 @@ $schedule-bar-padding: 14px;
       right: 0;
       top: 0;
       width: 5px;
-      background: darken($schedule-bar-bg-color, 10%);
+      background: color.adjust($schedule-bar-bg-color, $lightness: -10%);
 
       &.ui-resizable-e {
         right: 0;
@@ -174,7 +176,7 @@ $schedule-bar-padding: 14px;
 
         &.timeline-subtitle {
           font-size: 0.8em;
-          color: darken($schedule-bar-color, 20%);
+          color: color.adjust($schedule-bar-color, $lightness: -20%);
         }
       }
     }
