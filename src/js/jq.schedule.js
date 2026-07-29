@@ -393,7 +393,6 @@
                         let $moveNode = $(this);
                         let scKey = $moveNode.data('sc_key');
                         let timelineNum = methods._getTimeLineNumber.apply($this, [currentNode, ui.position.top]);
-                        // eslint-disable-next-line no-param-reassign
                         ui.position.left = Math.floor(ui.position.left / setting.widthTimeX) * setting.widthTimeX;
 
                         if (currentNode.nowTimeline !== timelineNum) {
@@ -909,12 +908,10 @@
      * @param {Object|string} method
      * @returns {jQuery|methods|*}
      */
-    // eslint-disable-next-line no-param-reassign
     $.fn.timeSchedule = function (method) {
         // Method calling logic
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-            // eslint-disable-next-line no-else-return
         } else if (typeof method === 'object' || !method) {
             return methods.init.apply(this, arguments);
         }
