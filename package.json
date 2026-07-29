@@ -1,6 +1,6 @@
 {
   "name": "@ateliee/jq.schedule",
-  "version": "4.1.9",
+  "version": "4.2.0",
   "description": "jQuery time schedule plugin",
   "main": "src/js/jq.schedule.js",
   "types": "src/@types/jq.schedule.d.ts",
@@ -44,11 +44,10 @@
   "devDependencies": {
     "@babel/core": "^7.27.4",
     "@babel/preset-env": "^7.27.2",
+    "@eslint/config-helpers": "^0.7.0",
     "browser-sync": "^3.0.4",
     "del": "^8.0.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-compat": "^6.0.2",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint": "^10.8.0",
     "eslint-plugin-no-jquery": "^3.1.1",
     "gulp": "^5.0.1",
     "gulp-babel": "^8.0.0",
@@ -69,5 +68,8 @@
     "hooks": {
       "pre-commit": "npm test && npm run build"
     }
+  },
+  "overrides": {
+    "brace-expansion": "^5.0.8"
   }
 }
