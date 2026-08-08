@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 #7.0.0
@@ -34,18 +35,18 @@ jobs:
           npm version $NEW_VERSION --no-git-tag-version
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Configure Git
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          BRANCH_NAME="bump-version/${{ inputs.new_version }}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit changes
-        run: |
+          git checkout -b "$BRANCH_NAME"
           git add package.json
           git commit -m "chore: bump version to ${{ inputs.new_version }}"
-
-      - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git push origin HEAD:${{ github.ref }}
+          git push origin "$BRANCH_NAME"
+          gh pr create --title "chore: bump version to ${{ inputs.new_version }}" \
+                       --body "Bumping package version to \`${{ inputs.new_version }}\` via workflow dispatch." \
+                       --head "$BRANCH_NAME" \
+                       --base "${{ github.ref_name }}"
