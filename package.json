@@ -1,6 +1,6 @@
 {
   "name": "@ateliee/jq.schedule",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "description": "jQuery time schedule plugin",
   "main": "src/js/jq.schedule.js",
   "types": "src/@types/jq.schedule.d.ts",
@@ -68,8 +68,5 @@
     "hooks": {
       "pre-commit": "npm test && npm run build"
     }
-  },
-  "overrides": {
-    "brace-expansion": "^5.0.8"
   }
 }
