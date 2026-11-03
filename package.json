@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/ateliee/jquery.schedule#readme",
   "dependencies": {
-    "jquery": "^3.7.1",
-    "jquery-ui-dist": "^1.13.3"
+    "jquery": "3.7.1",
+    "jquery-ui-dist": "1.13.3"
   },
   "engines": {
     "node": ">=24.0.0",
