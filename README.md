@@ -216,9 +216,34 @@ $("#schedule").timeSchedule('setResizable', true or false);
 
 ## For Development
 
-run server browser-sync
-```
+### Local (Node.js)
+
+run dev server
+```bash
 npm run serve
+```
+
+### Docker Compose / Make
+
+start dev server
+```bash
+make up
+```
+
+stop dev server
+```bash
+make down
+```
+
+other commands
+```bash
+make build          # Build Docker image
+make logs           # Follow container logs
+make shell          # Access container shell
+make test           # Run lint tests (eslint & stylelint)
+make lint-fix       # Fix ESLint issues
+make stylelint-fix  # Fix Stylelint issues
+make npm-build      # Build distribution files (dist/)
 ```
 
 dev URL: http://localhost:3000/demo/
