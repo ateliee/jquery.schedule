@@ -238,6 +238,7 @@ make down
 other commands
 ```bash
 make build          # Build Docker image
+make install        # Install npm dependencies
 make logs           # Follow container logs
 make shell          # Access container shell
 make test           # Run lint tests (eslint & stylelint)

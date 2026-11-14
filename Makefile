@@ -1,4 +1,4 @@
-.PHONY: help up down restart logs shell build test lint lint-fix stylelint stylelint-fix npm-build
+.PHONY: help up down restart logs shell build install test lint lint-fix stylelint stylelint-fix npm-build
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
@@ -20,6 +20,9 @@ logs: ## Follow container logs
 
 shell: ## Access container shell
 	docker compose run --rm app sh
+
+install: ## Install npm dependencies
+	docker compose run --rm app npm install
 
 test: ## Run all lint tests (eslint & stylelint)
 	docker compose run --rm app npm test
